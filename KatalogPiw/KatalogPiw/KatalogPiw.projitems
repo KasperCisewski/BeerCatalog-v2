@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{6C7763E7-23A0-4ED2-9C84-18654A80D5E5}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>KatalogPiw</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Beer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Brewery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CsvModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Type.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BeerDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ISave.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddBeerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddBreweryViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddTypeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EditorViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FileOpenViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShowBeerListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AddBeerView.xaml.cs">
+      <DependentUpon>AddBeerView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AddBreweryView.xaml.cs">
+      <DependentUpon>AddBreweryView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AddTypeView.xaml.cs">
+      <DependentUpon>AddTypeView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EditorView.xaml.cs">
+      <DependentUpon>EditorView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\FileOpenView.xaml.cs">
+      <DependentUpon>FileOpenView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ShowBeerListView.xaml.cs">
+      <DependentUpon>ShowBeerListView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AddBreweryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AddTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AddBeerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\FileOpenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ShowBeerListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

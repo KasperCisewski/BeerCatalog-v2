@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace KatalogPiw.Views
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class AddTypeView : ContentPage
+	{
+        ViewModels.AddTypeViewModel vm;
+        public AddTypeView()
+        {
+            vm = new ViewModels.AddTypeViewModel();
+            BindingContext = vm;
+            InitializeComponent();
+        }
+
+
+        private async void buttonSaveType_Click(object sender, EventArgs e)
+        {
+            if (TypeName.Text == "")
+            {
+                DisplayAlert("blad", "powinienes wpisac nazwe gatunku", "OK");
+            }
+            else
+            {
+                string name = TypeName.Text;
+                vm.AddType(name);
+
+            }
+        }
+        private async void OnEdit(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new EditorView(sender));
+
+            Initalize();
+
+        }
+        private void Initalize()
+        {
+            vm = new ViewModels.AddTypeViewModel();
+            BindingContext = vm;
+            InitializeComponent();
+        }
+        private async void OnDelete(object Sender, EventArgs e)
+        {
+
+            vm.DeleteType(Sender);
+            //DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
+            //  Windows.UI.Xaml.Controls.ListView.IsPullToRefreshEnabled = true;
+
+        }
+        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            //    if (e.Item == null)
+            //        return;
+
+            //    await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            //    //Deselect Item
+            //    ((ListView)sender).SelectedItem = null;
+        }
+    }
+}

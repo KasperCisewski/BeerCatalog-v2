@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KatalogPiw.Views.AddBreweryView">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Nowy Browar" HorizontalOptions="Center"/>
+            <Entry x:Name="BreweryName" WidthRequest="150"/>
+
+            <Button x:Name="btn" Clicked="buttonSaveBrewery_Click" Text="Zapisz Browar" FontSize="14" BorderColor="Black" MinimumWidthRequest="25" MinimumHeightRequest="50"/>
+            <Label Text="Browary" FontSize="20"/>
+            <ListView x:Name="BreweryList" ItemsSource="{Binding BreweryList}"  ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnEdit" Text="Edit"  />
+                                <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <ViewCell.View>
+                                <StackLayout Padding="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding BreweryName} " FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

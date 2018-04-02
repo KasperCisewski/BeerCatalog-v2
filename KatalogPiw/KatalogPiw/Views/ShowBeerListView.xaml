@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KatalogPiw.Views.ShowBeerListView">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <SearchBar x:Name="SearchBar"   Placeholder="{Binding PlaceHolderFilter}" Text="{Binding Filter}" HeightRequest="50"     />
+            <Label Text="Piwa" FontSize="20"/>
+            <ListView x:Name="BeerList" ItemsSource="{Binding Beers}"  ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding ID} " FontAttributes="Bold"/>
+                                    <Label Text=" |"/>
+                                    <Label Text="{Binding BeerName}" FontAttributes="Bold"/>
+                                    <Label Text=" |"/>
+                                    <Label Text="{Binding BrewerName}" FontAttributes="Italic"/>
+                                    <Label Text=" |"/>
+                                    <Label Text="{Binding TypeName}"/>
+                                    <Switch x:Name="IsSelect" IsToggled="{Binding IsSelect}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="CreatePDF" Clicked="buttonCreatePDF_Click" Text="Generuj PDF" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

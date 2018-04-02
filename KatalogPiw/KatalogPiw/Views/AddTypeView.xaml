@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KatalogPiw.Views.AddTypeView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nowy Gatunek" HorizontalOptions="Center"/>
+            <Entry x:Name="TypeName" WidthRequest="150"/>
+            <Button x:Name="btn" Clicked="buttonSaveType_Click" Text="Zapisz Gatunek" FontSize="14" BorderColor="Black" MinimumWidthRequest="25" MinimumHeightRequest="50"/>
+            <Label Text="Gatunki" FontSize="20"/>
+            <ListView x:Name="TypeList" ItemsSource="{Binding TypeList}"   CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnEdit" Text="Edit" />
+                                <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+
+
+                            <StackLayout Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding TypeName} " FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
