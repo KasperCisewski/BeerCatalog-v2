@@ -36,13 +36,12 @@ namespace KatalogPiw.Views
                 vm.LoadFile(name);
                 string readText = data.ToString();
                 //string filePath = fileData.FilePath;
+                DisplayAlert("done", "Udalo sie zaimportowac piwa", "ok");
 
             }
             catch (Exception ex)
             {
-
-
-
+                DisplayAlert("Error", "Cos nie zadziałało", "OK");
             }
         }
     }

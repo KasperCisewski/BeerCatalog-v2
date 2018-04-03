@@ -20,24 +20,43 @@ namespace KatalogPiw.Views
 			InitializeComponent ();
 		}
 
-        private async void buttonCreatePDF_Click(object sender, TextChangedEventArgs e)
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            vm.CreatePDF();
+            BeerList.BeginRefresh();
 
-
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+                BeerList.ItemsSource = vm.Beers;
+            else
+            {
+                BeerList.ItemsSource = vm.Beers.Where(i => (i.BrewerName.ToLower().Contains(e.NewTextValue.ToLower())
+                    || (i.TypeName.ToLower().Contains(e.NewTextValue.ToLower()))));               
+            }
+            BeerList.EndRefresh();
         }
+
+        private async void buttonSelectAllInList_Click(object sender,TextChangedEventArgs e)
+        {
+            vm.SelectAllBeers(SearchBar.Text);
+        }
+
+        private async void buttonCreatePriceListA_Click(object sender, TextChangedEventArgs e)
+        {
+            vm.CreatePriceListA();
+        }
+        private async void buttonCreatePriceListB_Click(object sender, TextChangedEventArgs e)
+        {
+            vm.CreatePriceListB();
+        }
+
+        private async void buttonCreatePriceListC_Click(object sender, TextChangedEventArgs e)
+        {
+            vm.CreatePriceListC();
+        }
+
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //    if (e.Item == null)
-            //        return;
 
-            //    await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-            //    //Deselect Item
-            //    ((ListView)sender).SelectedItem = null;
-        }
-
-       
+        }  
     }
 }

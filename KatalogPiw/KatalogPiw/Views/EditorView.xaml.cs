@@ -29,7 +29,6 @@ namespace KatalogPiw.Views
             else
             {
                 string newName = NewObjectName.Text;
-
                 vm.UpdateObject(newName);
                 DisplayAlert("Uwaga", "Zmieniono nazwe, aby zobaczyc zmiany cofnij", "OK");
             }

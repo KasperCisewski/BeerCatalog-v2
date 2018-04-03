@@ -7,10 +7,9 @@ using Xamarin.Forms;
 
 namespace KatalogPiw.ViewModels
 {
-    public class EditorViewModel
+    public class EditorViewModel:INotifyPropertyChanged
     {
         private string _name;
-
 
         public string Name
         {
@@ -28,24 +27,20 @@ namespace KatalogPiw.ViewModels
 
         private object _object;
 
-
         public EditorViewModel(object sender)
         {
             var mi = ((MenuItem)sender);
-            //sender.GetType();
 
             Models.Type typeTest = new Models.Type();
             if (mi.BindingContext.GetType() == typeTest.GetType())
             {
                 Models.Type type = (Models.Type)mi.BindingContext;
                 _name = type.TypeName;
-
                 _object = type;
             }
             else
             {
                 Brewery brewery = (Brewery)mi.BindingContext;
-
                 _name = brewery.BreweryName;
                 _object = brewery;
             }
@@ -61,9 +56,7 @@ namespace KatalogPiw.ViewModels
                 Models.Type newType = type;
                 newType.TypeName = newName;
                 App.Database.UpdateType(newType);
-                PropertyChanged(this, new PropertyChangedEventArgs(newName));
-
-
+                PropertyChanged(this, new PropertyChangedEventArgs(newType.TypeName));
             }
             else
             {
@@ -71,17 +64,20 @@ namespace KatalogPiw.ViewModels
                 Brewery newBrewery = brewery;
                 newBrewery.BreweryName = newName;
                 App.Database.UpdateBrewery(newBrewery);
-                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+                PropertyChanged(this, new PropertyChangedEventArgs(newBrewery.BreweryName));
             }
 
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(string name)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

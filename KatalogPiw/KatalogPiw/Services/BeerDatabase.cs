@@ -11,16 +11,17 @@ namespace KatalogPiw.Services
     public class BeerDatabase
     {
         private SQLiteConnection database;
+
         static object locker = new object();
+
         public BeerDatabase()
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
             database.CreateTable<Brewery>();
-
             database.CreateTable<Models.Type>();
             database.CreateTable<Beer>();
-
         }
+
         public int SaveBeer(Beer beer)
         {
             database.CreateTable<Beer>();
@@ -71,6 +72,7 @@ namespace KatalogPiw.Services
             }
             return false;
         }
+
         public void UpdateBrewery(Brewery nowyBrewery)
         {
 
@@ -121,7 +123,6 @@ namespace KatalogPiw.Services
             }
         }
 
-
         public List<Brewery> GetBreweries()
         {
             lock (locker)
@@ -151,6 +152,7 @@ namespace KatalogPiw.Services
                 return (from c in database.Table<Beer>() select c).ToList();
             }
         }
+
         public Beer GetBeer(int i)
         {
             lock (locker)

@@ -8,6 +8,5 @@ namespace KatalogPiw.Services
     public interface ISQLite
     {
         SQLiteConnection GetConnection();
-
     }
 }

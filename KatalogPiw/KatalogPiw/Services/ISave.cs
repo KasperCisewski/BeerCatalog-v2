@@ -9,6 +9,5 @@ namespace KatalogPiw.Services
     public interface ISave
     {
         Task SaveTextAsync(string filename, string contentType, MemoryStream s);
-
     }
 }

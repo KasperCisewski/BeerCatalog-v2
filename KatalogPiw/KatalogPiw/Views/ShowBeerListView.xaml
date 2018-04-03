@@ -5,7 +5,7 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar x:Name="SearchBar"   Placeholder="{Binding PlaceHolderFilter}" Text="{Binding Filter}" HeightRequest="50"     />
+            <SearchBar x:Name="SearchBar"    HeightRequest="50" TextChanged="SearchBar_TextChanged"   />
             <Label Text="Piwa" FontSize="20"/>
             <ListView x:Name="BeerList" ItemsSource="{Binding Beers}"  ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
                 <ListView.ItemTemplate>
@@ -27,7 +27,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="CreatePDF" Clicked="buttonCreatePDF_Click" Text="Generuj PDF" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+            <StackLayout Orientation="Horizontal" >
+            <Button x:Name="SelectAll" Clicked="buttonSelectAllInList_Click" Text="Zaznacz wszystkie" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+            <Button x:Name="CreatePriceListA" Clicked="buttonCreatePriceListA_Click" Text="Generuj Cennik A" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+            <Button x:Name="CreatePriceListB" Clicked="buttonCreatePriceListB_Click" Text="Generuj Cennik B" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+            <Button x:Name="CreatePriceListC" Clicked="buttonCreatePriceListC_Click" Text="Generuj Cennik C" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
         </StackLayout>
 
     </ContentPage.Content>

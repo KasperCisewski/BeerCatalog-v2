@@ -17,8 +17,6 @@
                                 <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="True" />
                             </ViewCell.ContextActions>
 
-
-
                             <StackLayout Padding="10">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding TypeName} " FontAttributes="Bold"/>

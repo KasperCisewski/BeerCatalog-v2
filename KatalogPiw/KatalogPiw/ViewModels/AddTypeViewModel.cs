@@ -15,8 +15,8 @@ namespace KatalogPiw.ViewModels
         public ObservableCollection<Models.Type> TypeList
         {
             get { return _typeList; }
-
         }
+
         public AddTypeViewModel()
         {
             _typeList = new ObservableCollection<Models.Type>();
@@ -24,7 +24,6 @@ namespace KatalogPiw.ViewModels
             {
                 _typeList.Add(KatalogPiw.App.Database.GetType(i));
             }
-
         }
 
         public void AddType(string typeName)
@@ -34,20 +33,14 @@ namespace KatalogPiw.ViewModels
             _typeList.Add(type);
             KatalogPiw.App.Database.SaveType(type);
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, type));
-
         }
 
         public void DeleteType(Object Sender)
         {
             var mi = ((MenuItem)Sender);
-
             Models.Type type = (Models.Type)mi.BindingContext;
-
             int ID = type.TypeID;
-
-
             _typeList.Remove(type);
-
             KatalogPiw.App.Database.DeleteType(type);
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }

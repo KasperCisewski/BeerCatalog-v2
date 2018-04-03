@@ -20,7 +20,6 @@ namespace KatalogPiw.Views
             InitializeComponent();
         }
 
-
         private async void buttonSaveType_Click(object sender, EventArgs e)
         {
             if (TypeName.Text == "")
@@ -31,16 +30,14 @@ namespace KatalogPiw.Views
             {
                 string name = TypeName.Text;
                 vm.AddType(name);
-
             }
         }
         private async void OnEdit(object sender, EventArgs e)
         {
-
+            TypeList.BeginRefresh();
             await Navigation.PushAsync(new EditorView(sender));
-
             Initalize();
-
+            TypeList.EndRefresh();
         }
         private void Initalize()
         {
@@ -50,10 +47,7 @@ namespace KatalogPiw.Views
         }
         private async void OnDelete(object Sender, EventArgs e)
         {
-
             vm.DeleteType(Sender);
-            //DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
-            //  Windows.UI.Xaml.Controls.ListView.IsPullToRefreshEnabled = true;
 
         }
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

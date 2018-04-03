@@ -12,7 +12,6 @@ namespace KatalogPiw.Models
         public int BreweryID { get; set; }
         public string BreweryName { get; set; }
 
-
         [OneToMany]
         public List<Beer> Beers { get; set; }
     }

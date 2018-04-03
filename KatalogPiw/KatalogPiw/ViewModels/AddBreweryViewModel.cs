@@ -33,7 +33,6 @@ namespace KatalogPiw.ViewModels
             if(App.Database.SaveBrewery(Brewery)!=0)
             {
                 _breweryList.Add(Brewery);
-
             }
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Brewery));
         }
@@ -52,7 +51,6 @@ namespace KatalogPiw.ViewModels
                 {
                     Brewery Brewery = _breweryList[i];
                     _breweryList.RemoveAt(i);
-
                     KatalogPiw.App.Database.DeleteBrewery(Brewery);
                     notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
                     break;
@@ -60,9 +58,6 @@ namespace KatalogPiw.ViewModels
             }
 
         }
-
-
-
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 

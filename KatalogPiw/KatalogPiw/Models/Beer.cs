@@ -10,6 +10,7 @@ namespace KatalogPiw.Models
     {
         [PrimaryKeyAttribute, AutoIncrement]
         public int ID { get; set; }
+        public string EanCode { get; set; }
         public string BeerName { get; set; }
         [ForeignKey(typeof(Brewery))]
         public int BreweryID { get; set; }
@@ -18,7 +19,10 @@ namespace KatalogPiw.Models
         public string BrewerName { get; set; }
         public double NetPriceWithoutDiscout { get; set; }
         public double NetPriceWithDiscout { get; set; }
-
+       // public double[] PriceListBeers = new double[3];
+        public double PriceListA { get; set; }
+        public double PriceListB { get; set; }
+        public double PriceListC { get; set; }
         [ForeignKey(typeof(Type))]
         public int TypeID { get; set; }
         [ManyToOne]
@@ -45,7 +49,6 @@ namespace KatalogPiw.Models
             this.Parameters = Parameters;
             this.Description = Description;
             this.FoodParing = FoodParing;
-
         }
     }
 }
