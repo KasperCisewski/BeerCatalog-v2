@@ -36,6 +36,10 @@ namespace KatalogPiw.Views
 
         private async void buttonSelectAllInList_Click(object sender,TextChangedEventArgs e)
         {
+            if(SearchBar.Text==null)
+            {
+                SearchBar.Text = "";
+            }
             vm.SelectAllBeers(SearchBar.Text);
         }
 
