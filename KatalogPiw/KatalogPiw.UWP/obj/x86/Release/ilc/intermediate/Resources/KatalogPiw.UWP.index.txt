@@ -1,0 +1,2 @@
+KatalogPiw.UWP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  KatalogPiw.UWP.App.xaml

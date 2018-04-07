@@ -18,7 +18,8 @@ namespace KatalogPiw.ViewModels
             List<string> lines = new List<string>();
             try
             {
-                using (StreamReader sr = new StreamReader(fileName))
+                
+                using (StreamReader sr = new StreamReader((fileName), Encoding.GetEncoding("utf-8")))
                 {
                     foreach (var lin in File.ReadLines(fileName))
                     {
@@ -65,45 +66,57 @@ namespace KatalogPiw.ViewModels
             for (int i = 0; i < CsvModelList.Count; i++)
             {
                 CsvModel csvModel = CsvModelList[i];
-                Brewery brewery = new Brewery();
-                Models.Type type = new Models.Type();
-                brewery.BreweryName = csvModel.Provider;
-                type.TypeName = csvModel.Group;
+                if (csvModel.Quantity >0)
+                {
 
-                Beer beer = new Beer(csvModel.Name, brewery, csvModel.NetPrice, csvModel.PurchasePrice, type, csvModel.UnitWeight, csvModel.Description, csvModel.Quantity.ToString());
-                beer.BrewerName = brewery.BreweryName;
-                beer.TypeName = type.TypeName;
-                UpdateDataBases(brewery, type);
-                beer.PriceListA = CountGrossPrice(csvModel.NetPrice);
-                beer.PriceListB = CountGrossPrice(csvModel.NetPrice * 0.95);
-                beer.PriceListC = CountGrossPrice(csvModel.NetPrice * 0.90);
-                beer.EanCode = csvModel.Code;
-                
-                _beerList.Add(beer);
-                KatalogPiw.App.Database.SaveBeer(beer);
+
+                    Brewery brewery = new Brewery();
+                    Models.Type type = new Models.Type();
+                    brewery.BreweryName = csvModel.Provider;
+                    type.TypeName = csvModel.Group;
+
+                    Beer beer = new Beer(csvModel.Name, brewery, csvModel.NetPrice, csvModel.PurchasePrice, type, csvModel.UnitWeight, csvModel.Description, csvModel.Quantity.ToString());
+                    beer.BrewerName = brewery.BreweryName;
+                    beer.TypeName = type.TypeName;
+                   
+                    UpdateDataBases(ref brewery, ref type);
+                    beer.BreweryID = brewery.BreweryID;
+                    beer.TypeID = type.TypeID;
+                    beer.PriceListA = CountGrossPrice(csvModel.NetPrice);
+                   // beer.PriceListB = CountGrossPrice(csvModel.NetPrice * 0.95);
+                    //beer.PriceListC = CountGrossPrice(csvModel.NetPrice * 0.90);
+                    beer.Quantity = csvModel.Quantity;
+                    beer.EanCode = csvModel.Code;
+                    beer.PhotoPath = csvModel.FilePickturePath;
+                    beer.Plato = csvModel.PackageWeight;
+                   
+                    _beerList.Add(beer);
+                    KatalogPiw.App.Database.SaveBeer(beer);
+                }
             }
             return _beerList;
         }
 
-        private void UpdateDataBases(Brewery brewery,Models.Type type)
+        private void UpdateDataBases(ref Brewery brewery,ref Models.Type type)
         {
-            if(IsBrewerInDB(brewery)==false)
+            if(IsBrewerInDB(ref brewery)==false)
             {
                 App.Database.SaveBrewery(brewery);
             }
-            if(IsTypeInDB(type)==false)
+            if(IsTypeInDB(ref type)==false)
             {
-                App.Database.SaveType(type);
-            }                 
+                App.Database.SaveType( type);
+            }           
         }
 
-        private bool IsBrewerInDB(Brewery brewery)
+        private bool IsBrewerInDB(ref Brewery brewery)
         {
             List<Brewery> breweries = App.Database.GetBreweries();
             for (int i = 0; i < breweries.Count; i++)
             {
                 if (breweries[i].BreweryName.ToLower() == brewery.BreweryName.ToLower())
                 {
+                    brewery.BreweryID = breweries[i].BreweryID;
                     return true;
                 }
             }
@@ -111,13 +124,14 @@ namespace KatalogPiw.ViewModels
 
         }
 
-        private bool IsTypeInDB(Models.Type type)
+        private bool IsTypeInDB(ref Models.Type type)
         {
             List<Models.Type> types = App.Database.GetTypes();
             for (int i = 0; i < types.Count; i++)
             {
                 if(types[i].TypeName.ToLower()==type.TypeName.ToLower())
                 {
+                    type.TypeID = types[i].TypeID;
                     return true;
                 }
             }

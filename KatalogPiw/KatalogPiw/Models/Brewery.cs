@@ -11,7 +11,7 @@ namespace KatalogPiw.Models
         [PrimaryKey, AutoIncrement]
         public int BreweryID { get; set; }
         public string BreweryName { get; set; }
-
+        public bool IsSelected { get; set; }
         [OneToMany]
         public List<Beer> Beers { get; set; }
     }

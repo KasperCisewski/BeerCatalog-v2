@@ -1,13 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+
              x:Class="KatalogPiw.Views.ShowBeerListView">
     <ContentPage.Content>
 
         <StackLayout>
             <SearchBar x:Name="SearchBar"    HeightRequest="50" TextChanged="SearchBar_TextChanged"   />
+            <StackLayout Orientation="Horizontal">
+            
+                <ListView x:Name="TypeList" ItemsSource="{Binding TypeList}"  ItemTapped="SelectType_ItemSelect"  >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="ClearTypeContext" Text="Clear" />
+                                </ViewCell.ContextActions>
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label x:Name="LabelTextName" Text="{Binding TypeName}"  />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView x:Name="BreweryList" ItemsSource="{Binding BreweryList}" ItemTapped="SelectBrewery_ItemSelect">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="ClearBreweryContext" Text="Clear"/>
+                                </ViewCell.ContextActions>
+                                <StackLayout Orientation="Horizontal">
+                                 
+                                    <Label Text="{Binding BreweryName}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <Slider x:Name="Slider" Minimum="0" Maximum="200" Value="0" ValueChanged="Slider_ValueChanged" />
             <Label Text="Piwa" FontSize="20"/>
-            <ListView x:Name="BeerList" ItemsSource="{Binding Beers}"  ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
+            <ListView x:Name="BeerList" ItemsSource="{Binding Beers}"  CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -20,6 +57,8 @@
                                     <Label Text="{Binding BrewerName}" FontAttributes="Italic"/>
                                     <Label Text=" |"/>
                                     <Label Text="{Binding TypeName}"/>
+                                    <Label Text=" |"/>
+                                    <Label Text="{Binding Quantity}"/>
                                     <Switch x:Name="IsSelect" IsToggled="{Binding IsSelect}"/>
                                 </StackLayout>
                             </StackLayout>
@@ -28,6 +67,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout Orientation="Horizontal" >
+
             <Button x:Name="SelectAll" Clicked="buttonSelectAllInList_Click" Text="Zaznacz wszystkie" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
             <Button x:Name="CreatePriceListA" Clicked="buttonCreatePriceListA_Click" Text="Generuj Cennik A" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
             <Button x:Name="CreatePriceListB" Clicked="buttonCreatePriceListB_Click" Text="Generuj Cennik B" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>

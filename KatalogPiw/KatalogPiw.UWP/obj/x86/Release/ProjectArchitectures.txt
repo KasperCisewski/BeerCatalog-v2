@@ -1,0 +1,1 @@
+C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\KatalogPiw.UWP.csproj;x86

@@ -22,12 +22,12 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Input;
 using System.Diagnostics;
+using System.Collections;
 
 namespace KatalogPiw.ViewModels
 {
     public class ShowBeerListViewModel:INotifyPropertyChanged,INotifyCollectionChanged
     {
-        
         private ObservableCollection <Beer> _beers;
         public ObservableCollection<Beer> Beers
         {
@@ -47,6 +47,19 @@ namespace KatalogPiw.ViewModels
             }
         }
 
+        private readonly ObservableCollection<Brewery> _breweryList;
+        public ObservableCollection<Brewery> BreweryList
+        {
+            get { return _breweryList; }
+
+        }
+
+        private readonly ObservableCollection<Models.Type> _typeList;
+        public ObservableCollection<Models.Type> TypeList
+        {
+            get { return _typeList; }
+        }
+
         public ShowBeerListViewModel()
         {
             _beers = new ObservableCollection<Beer>();
@@ -57,43 +70,102 @@ namespace KatalogPiw.ViewModels
                 _beers[i].Breweries = App.Database.GetBreweries();
                 _beers[i].Types = App.Database.GetTypes();
             }
+            _breweryList = new ObservableCollection<Brewery>();
+            for (int i = 0; i < App.Database.GetBreweries().Count; i++)
+            {
+                _breweryList.Add(KatalogPiw.App.Database.GetBrewery(i));
+                _breweryList[i].IsSelected = false;
+            }
+            _typeList = new ObservableCollection<Models.Type>();
+            for (int i = 0; i < App.Database.GetTypes().Count; i++)
+            {
+                _typeList.Add(KatalogPiw.App.Database.GetType(i));
+                _typeList[i].IsSelected = false;
+            }
         }
-        
-        public void SelectAllBeers(string searchBarText)
+
+        public List<Beer> FiltringBeers(string searchBarText, object breweryListObject, object typeListObject, double value)
         {
             List<Beer> beers = new List<Beer>();
-            
-           
-                beers = Beers.Where(i => (i.BrewerName.ToLower().Contains(searchBarText.ToLower())
-                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))).ToList();
 
-            for(int i=0;i<beers.Count;i++)
+            if (breweryListObject == null && typeListObject == null)
+            {
+                return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value)).ToList();
+            }
+            else if (breweryListObject == null)
+            {
+                Models.Type type = (Models.Type)typeListObject;
+               
+                 return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.TypeID==type.TypeID)).ToList();
+            }
+            else if (typeListObject == null)
+            {
+                Brewery brewery = (Brewery)breweryListObject;
+                 return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID==brewery.BreweryID)).ToList();
+            }
+            else
+            {
+                Brewery brewery = (Brewery)breweryListObject;
+                Models.Type type = (Models.Type)typeListObject;
+               return  beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID == brewery.BreweryID) &&(i.TypeID == type.TypeID)).ToList();
+            }            
+        }
+
+        public void SelectAllBeers(string searchBarText, object breweryListObject, object typeListObject, double value)
+        {
+            List<Beer> beers = FiltringBeers(searchBarText, breweryListObject, typeListObject, value);
+
+            for (int i = 0; i < beers.Count; i++)
             {
                 beers[i].IsSelect = true;
             }
 
-            for(int i=0;i<beers.Count;i++)
+            for (int i = 0; i < beers.Count; i++)
             {
-                for(int j=0;j<_beers.Count;j++)
+                for (int j = 0; j < _beers.Count; j++)
                 {
-                    if(beers[i].ID==_beers[j].ID)
+                    if (beers[i].ID == _beers[j].ID)
                     {
                         _beers[j].IsSelect = true;
-                        notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, _beers[j]));
+                        notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, _beers, _beers)); // tu cos zmienic
                         break;
                     }
                 }
             }
-          
-
-
         }
 
+        public void UpdateTypeList(Models.Type type)
+        {
+            for(int i=0;i<_typeList.Count;i++)
+            {
+                if(_typeList[i].TypeName==type.TypeName)
+                {
+                    _typeList.Where(d => (d.TypeID == type.TypeID)).First().IsSelected = true;
+                }
+            }
+        }    
+
+        public void UpdateBreweryList(Brewery brewery)
+        {
+            for(int i=0;i<_breweryList.Count;i++)
+            {
+                if(_breweryList[i].BreweryName==brewery.BreweryName)
+                {
+                    _breweryList.Where(b => (b.BreweryID == brewery.BreweryID)).First().IsSelected = true;
+                }
+            }
+        }
+      
         public void CreatePriceListA()
         {
             PdfDocument doc = new PdfDocument();
-
+            doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
             PdfPage page = doc.Pages.Add();
+
 
             RectangleF bounds = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
 
@@ -107,29 +179,38 @@ namespace KatalogPiw.ViewModels
 
             this.AddHeader(page, doc, "cos");
 
+            //Stream fontStream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream("utf-8");
+            //PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
 
 
             PdfGrid pdfGrid = new PdfGrid();
-            pdfGrid.Columns.Add(10);
+            pdfGrid.Columns.Add(11);
             PdfStringFormat format = new PdfStringFormat();
 
-            format.Alignment = PdfTextAlignment.Left;
-            format.LineAlignment = PdfVerticalAlignment.Top;
+            format.Alignment = PdfTextAlignment.Center;
+            format.LineAlignment = PdfVerticalAlignment.Middle;
 
-            for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < 11; i++)
             {
                 pdfGrid.Columns[i].Format = format;
+
             }
-            pdfGrid.Columns[0].Width = 48;
+            pdfGrid.Columns[0].Width = 50;
             pdfGrid.Columns[1].Width = 95;
             pdfGrid.Columns[2].Width = 50;
             pdfGrid.Columns[3].Width = 30;
-            pdfGrid.Columns[4].Width = 170;
-            pdfGrid.Columns[5].Width = 20;
-            pdfGrid.Columns[6].Width = 15;
-            pdfGrid.Columns[7].Width = 25;
-            pdfGrid.Columns[8].Width = 35;
+
+            pdfGrid.Columns[4].Width = 280;
+            pdfGrid.Columns[5].Width = 38;
+            pdfGrid.Columns[6].Width = 38;
+            pdfGrid.Columns[7].Width = 38;
+            pdfGrid.Columns[8].Width = 38;
+            pdfGrid.Columns[9].Width = 38;
             pdfGrid.Headers.Add(1);
+
+            //pdfGrid.Columns[4].Format.Alignment = PdfTextAlignment.Left;
+            //pdfGrid.Columns[4].Format.LineAlignment = PdfVerticalAlignment.Top;
 
             PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
 
@@ -137,13 +218,14 @@ namespace KatalogPiw.ViewModels
             pdfGridHeader.Cells[1].Value = "Nazwa";
             pdfGridHeader.Cells[2].Value = "Browar";
             pdfGridHeader.Cells[3].Value = "Gatunek";
-            pdfGridHeader.Cells[4].Value = "Opis 2";
+            pdfGridHeader.Cells[4].Value = "Opis";
             pdfGridHeader.Cells[5].Value = "Alkohol";
             pdfGridHeader.Cells[6].Value = "Plato";
             pdfGridHeader.Cells[7].Value = "Cena Netto";
-            pdfGridHeader.Cells[8].Value = "Cena sugerowana";
-            // pdfGridHeader.Cells[9].Value = "Zdjecie";
-            pdfGridHeader.Style.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
+            pdfGridHeader.Cells[8].Value = "Cena Brutto";
+            pdfGridHeader.Cells[9].Value = "Cena sugerowana";
+            pdfGridHeader.Cells[10].Value = "Zdjecie";
+            pdfGridHeader.Style.Font = new PdfStandardFont(PdfFontFamily.TimesRoman, 6, PdfFontStyle.Bold);
 
             //add rows
             List<Beer> OutBeerList = new List<Beer>();
@@ -159,18 +241,22 @@ namespace KatalogPiw.ViewModels
             for (int i = 0; i < OutBeerList.Count; i++)
             {
                 PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
-                pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
+                pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;              
                 pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
                 pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;    //OutBeerList[i].   Browary[OutBeerList[i].BrowarID - 1].NazwaBrowaru;
                 pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
                 pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
                 pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; // DodawanieGatunkuViewModel.ListaWszystkichGatunkow[OutBeerList[i].GatunekID - 1].NazwaGatunku;
-                pdfGridRow.Cells[6].Value = OutBeerList[i].FoodParing;
+                pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
                 double outputValue = OutBeerList[i].NetPriceWithoutDiscout;
                 outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
                 pdfGridRow.Cells[7].Value = outputValue.ToString();
-                pdfGridRow.Cells[8].Value = OutBeerList[i].PriceListA.ToString();
-                //pdfGridRow.Cells[9].Value = OutBeerList[i].Image;
+                double grossPrice = outputValue * 1.23;
+                grossPrice = FileOpenViewModel.UptoTwoDecimalPoints(grossPrice);
+                pdfGridRow.Cells[8].Value = grossPrice.ToString();
+                pdfGridRow.Cells[9].Value = OutBeerList[i].PriceListA.ToString();
+                //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
+                pdfGridRow.Height = 47;
                 pdfGridRow.Style.Font= new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
             }
 
@@ -183,7 +269,6 @@ namespace KatalogPiw.ViewModels
             doc.Save(stream);
 
 
-
             Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikA.pdf", "application/pdf", stream);
 
             doc.Close(true);
@@ -192,6 +277,7 @@ namespace KatalogPiw.ViewModels
         public void CreatePriceListB()
         {
             PdfDocument doc = new PdfDocument();
+            doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
 
             PdfPage page = doc.Pages.Add();
 
@@ -213,22 +299,22 @@ namespace KatalogPiw.ViewModels
             pdfGrid.Columns.Add(10);
             PdfStringFormat format = new PdfStringFormat();
 
-            format.Alignment = PdfTextAlignment.Left;
-            format.LineAlignment = PdfVerticalAlignment.Top;
+            format.Alignment = PdfTextAlignment.Center;
+            format.LineAlignment = PdfVerticalAlignment.Middle;
 
             for (int i = 0; i < 10; i++)
             {
                 pdfGrid.Columns[i].Format = format;
             }
-            pdfGrid.Columns[0].Width = 48;
+            pdfGrid.Columns[0].Width = 50;
             pdfGrid.Columns[1].Width = 95;
             pdfGrid.Columns[2].Width = 50;
             pdfGrid.Columns[3].Width = 30;
-            pdfGrid.Columns[4].Width = 170;
-            pdfGrid.Columns[5].Width = 20;
-            pdfGrid.Columns[6].Width = 15;
-            pdfGrid.Columns[7].Width = 25;
-            pdfGrid.Columns[8].Width = 35;
+            pdfGrid.Columns[4].Width = 318;
+            pdfGrid.Columns[5].Width = 38;
+            pdfGrid.Columns[6].Width = 38;
+            pdfGrid.Columns[7].Width = 38;
+            pdfGrid.Columns[8].Width = 38;
             pdfGrid.Headers.Add(1);
 
             PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
@@ -237,11 +323,11 @@ namespace KatalogPiw.ViewModels
             pdfGridHeader.Cells[1].Value = "Nazwa";
             pdfGridHeader.Cells[2].Value = "Browar";
             pdfGridHeader.Cells[3].Value = "Gatunek";
-            pdfGridHeader.Cells[4].Value = "Opis 2";
+            pdfGridHeader.Cells[4].Value = "Opis";
             pdfGridHeader.Cells[5].Value = "Alkohol";
             pdfGridHeader.Cells[6].Value = "Plato";
             pdfGridHeader.Cells[7].Value = "Cena Netto";
-            pdfGridHeader.Cells[8].Value = "Cena sugerowana";
+            pdfGridHeader.Cells[8].Value = "Cena Brutto";
             // pdfGridHeader.Cells[9].Value = "Zdjecie";
             pdfGridHeader.Style.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
 
@@ -265,12 +351,15 @@ namespace KatalogPiw.ViewModels
                 pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
                 pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
                 pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; // DodawanieGatunkuViewModel.ListaWszystkichGatunkow[OutBeerList[i].GatunekID - 1].NazwaGatunku;
-                pdfGridRow.Cells[6].Value = OutBeerList[i].FoodParing;
+                pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
                 double outputValue = OutBeerList[i].NetPriceWithoutDiscout*0.95;
                 outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
                 pdfGridRow.Cells[7].Value = outputValue.ToString();
-                pdfGridRow.Cells[8].Value = OutBeerList[i].PriceListB.ToString();
+                double grossValue = outputValue * 1.23;
+                grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
+                pdfGridRow.Cells[8].Value = grossValue.ToString();
                 //pdfGridRow.Cells[9].Value = OutBeerList[i].Image;
+                pdfGridRow.Height = 47;
                 pdfGridRow.Style.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
 
             }
@@ -293,6 +382,7 @@ namespace KatalogPiw.ViewModels
         public void CreatePriceListC()
         {
             PdfDocument doc = new PdfDocument();
+            doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
 
             PdfPage page = doc.Pages.Add();
 
@@ -320,15 +410,15 @@ namespace KatalogPiw.ViewModels
             {
                 pdfGrid.Columns[i].Format = format;
             }
-            pdfGrid.Columns[0].Width = 48;
+            pdfGrid.Columns[0].Width = 50;
             pdfGrid.Columns[1].Width = 95;
             pdfGrid.Columns[2].Width = 50;
             pdfGrid.Columns[3].Width = 30;
-            pdfGrid.Columns[4].Width = 170;
-            pdfGrid.Columns[5].Width = 20;
-            pdfGrid.Columns[6].Width = 15;
-            pdfGrid.Columns[7].Width = 25;
-            pdfGrid.Columns[8].Width = 35;
+            pdfGrid.Columns[4].Width = 318;
+            pdfGrid.Columns[5].Width = 38;
+            pdfGrid.Columns[6].Width = 38;
+            pdfGrid.Columns[7].Width = 38;
+            pdfGrid.Columns[8].Width = 38;
             pdfGrid.Headers.Add(1);
 
             PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
@@ -341,7 +431,7 @@ namespace KatalogPiw.ViewModels
             pdfGridHeader.Cells[5].Value = "Alkohol";
             pdfGridHeader.Cells[6].Value = "Plato";
             pdfGridHeader.Cells[7].Value = "Cena Netto";
-            pdfGridHeader.Cells[8].Value = "Cena sugerowana";
+            pdfGridHeader.Cells[8].Value = "Cena Brutto";
             // pdfGridHeader.Cells[9].Value = "Zdjecie";
             pdfGridHeader.Style.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 5, PdfFontStyle.Bold);
 
@@ -365,12 +455,15 @@ namespace KatalogPiw.ViewModels
                 pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
                 pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
                 pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; 
-                pdfGridRow.Cells[6].Value = OutBeerList[i].FoodParing;
+                pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
                 double outputValue = OutBeerList[i].NetPriceWithoutDiscout*0.90;
                 outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
                 pdfGridRow.Cells[7].Value = outputValue.ToString();
-                pdfGridRow.Cells[8].Value = OutBeerList[i].PriceListC.ToString();
+                double grossValue = outputValue * 1.23;
+                grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
+                pdfGridRow.Cells[8].Value = grossValue.ToString();
                 //pdfGridRow.Cells[9].Value = OutBeerList[i].Image;
+                pdfGridRow.Height = 47;
                 pdfGridRow.Style.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
 
             }
@@ -424,14 +517,6 @@ namespace KatalogPiw.ViewModels
            
 
 
-            //Draw some lines in the header
-            pen = new PdfPen(Syncfusion.Drawing.Color.DarkBlue, 0.7f);
-            header.Graphics.DrawLine(pen, 0, 0, header.Width, 0);
-            pen = new PdfPen(Syncfusion.Drawing.Color.DarkBlue, 2f);
-            header.Graphics.DrawLine(pen, 0, 03, header.Width + 3, 03);
-            pen = new PdfPen(Syncfusion.Drawing.Color.DarkBlue, 2f);
-            header.Graphics.DrawLine(pen, 0, header.Height - 3, header.Width, header.Height - 3);
-            header.Graphics.DrawLine(pen, 0, header.Height, header.Width, header.Height);
 
             //Add header template at the top.
             doc.Template.Top = header;
