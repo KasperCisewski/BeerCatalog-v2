@@ -12,16 +12,16 @@ using System.Collections.ObjectModel;
 
 namespace KatalogPiw.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ShowBeerListView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ShowBeerListView : ContentPage
+    {
         ShowBeerListViewModel vm;
-		public ShowBeerListView ()
-		{
+        public ShowBeerListView()
+        {
             vm = new ShowBeerListViewModel();
             BindingContext = vm;
-			InitializeComponent ();
-		}
+            InitializeComponent();
+        }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -47,29 +47,65 @@ namespace KatalogPiw.Views
 
         }
 
-        private async void buttonSelectAllInList_Click(object sender,TextChangedEventArgs e)
+        private async void buttonSelectAllInList_Click(object sender, TextChangedEventArgs e)
         {
-            if(SearchBar.Text==null)
+            if (SearchBar.Text == null)
             {
                 SearchBar.Text = "";
             }
 
-              vm.SelectAllBeers(SearchBar.Text,BreweryList.SelectedItem,TypeList.SelectedItem,Slider.Value);
+            vm.SelectAllBeers(SearchBar.Text, BreweryList.SelectedItem, TypeList.SelectedItem, Slider.Value);
         }
 
         private async void buttonCreatePriceListA_Click(object sender, TextChangedEventArgs e)
         {
-            vm.CreatePriceListA();
+            try
+            {
+                vm.CreatePriceListA();
+            }
+
+            catch (Syncfusion.Pdf.PdfException pdfException)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + pdfException.Message.ToString(), "OK");
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + exception.Message.ToString(), "OK");
+            }
         }
 
         private async void buttonCreatePriceListB_Click(object sender, TextChangedEventArgs e)
         {
-            vm.CreatePriceListB();
+            try
+            {
+                vm.CreatePriceListB();
+            }
+
+            catch (Syncfusion.Pdf.PdfException pdfException)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + pdfException.Message.ToString(), "OK");
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + exception.Message.ToString(), "OK");
+            }
         }
 
         private async void buttonCreatePriceListC_Click(object sender, TextChangedEventArgs e)
         {
-            vm.CreatePriceListC();
+            try
+            {
+                vm.CreatePriceListC();
+            }
+
+            catch (Syncfusion.Pdf.PdfException pdfException)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + pdfException.Message.ToString(), "OK");
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Error", "Problem z generowaniem PDF" + exception.Message.ToString(), "OK");
+            }
         }
 
         private async void ClearTypeContext(object Sender, EventArgs e)
@@ -78,19 +114,19 @@ namespace KatalogPiw.Views
             TypeList.SelectedItem = null;
         }
 
-        private async void ClearBreweryContext(object sender,EventArgs e)
+        private async void ClearBreweryContext(object sender, EventArgs e)
         {
             BreweryList.SelectedItem = null;
         }
 
-        async void SelectType_ItemSelect(object sender,SelectedItemChangedEventArgs e)
+        async void SelectType_ItemSelect(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
             {
 
                 return;
             }
-         
+
             if (SearchBar.Text == null)
             {
                 SearchBar.Text = "";

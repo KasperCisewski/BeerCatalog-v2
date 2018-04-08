@@ -99,4 +99,8 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\Helvetica-Bold.ttf" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\Helvetica-Regular.ttf" />
+  </ItemGroup>
 </Project>
