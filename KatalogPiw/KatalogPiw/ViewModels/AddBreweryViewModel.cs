@@ -26,15 +26,15 @@ namespace KatalogPiw.ViewModels
 
         }
 
-        public void AddBrewery(string NazwaBreweryu)
+        public void AddBrewery(string BreweryName)
         {
-            Brewery Brewery = new Brewery();
-            Brewery.BreweryName = NazwaBreweryu;
-            if(App.Database.SaveBrewery(Brewery)!=0)
+            Brewery brewery = new Brewery();
+            brewery.BreweryName = BreweryName;
+            if(App.Database.SaveBrewery(brewery)!=0)
             {
-                _breweryList.Add(Brewery);
+                _breweryList.Add(brewery);
             }
-            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Brewery));
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, brewery));
         }
 
         public void DeleteBrewery(object Sender)

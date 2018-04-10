@@ -26,10 +26,11 @@ namespace KatalogPiw.ViewModels
             }
         }
 
-        public void AddType(string typeName)
+        public void AddType(string typeName,string foodParing)
         {
             Models.Type type = new Models.Type();
             type.TypeName = typeName;
+            type.FoodParing = foodParing;
             _typeList.Add(type);
             KatalogPiw.App.Database.SaveType(type);
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, type));

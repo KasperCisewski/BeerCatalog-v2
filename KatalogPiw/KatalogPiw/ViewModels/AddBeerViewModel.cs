@@ -36,9 +36,9 @@ namespace KatalogPiw.ViewModels
             }
         }
 
-        public void AddBeer(string beerName, Models.Brewery brewery, double netPriceWD, double netPriceD, Models.Type type, string parameters, string description, string foodParing)
+        public void AddBeer(string beerName, Models.Brewery brewery, double netPriceWD, double netPriceD, Models.Type type, string parameters, string description)
         {
-            Models.Beer beer = new Models.Beer(beerName, brewery, netPriceWD, netPriceD, type, parameters, description, foodParing);
+            Models.Beer beer = new Models.Beer(beerName, brewery, netPriceWD, netPriceD, type, parameters, description);
             beer.Breweries = App.Database.GetBreweries();
             beer.Types = App.Database.GetTypes();
             beer.BrewerName = brewery.BreweryName;

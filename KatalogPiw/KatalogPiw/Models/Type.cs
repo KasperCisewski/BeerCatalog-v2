@@ -11,6 +11,7 @@ namespace KatalogPiw.Models
         [PrimaryKey, AutoIncrement]
         public int TypeID { get; set; }
         public string TypeName { get; set; }
+        public string FoodParing { get; set; }
         public bool IsSelected { get; set; }
         [OneToMany]
         public List<Beer> Beers { get; set; }

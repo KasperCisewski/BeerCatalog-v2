@@ -30,7 +30,7 @@ namespace KatalogPiw.Models
         public string Parameters { get; set; }
         public string Plato { get; set; }
         public string Description { get; set; }
-        public string FoodParing { get; set; }
+        //public string FoodParing { get; set; }
         public string PhotoPath { get; set; }
         // ImageSource imageSource;
         public bool IsSelect { get; set; }
@@ -40,7 +40,7 @@ namespace KatalogPiw.Models
 
         }
 
-        public Beer(string BeerName,Brewery Brew, double NetPriceWithoutDiscout, double NetPriceWithDiscout, Type Type, string Parameters, string Description, string FoodParing)
+        public Beer(string BeerName,Brewery Brew, double NetPriceWithoutDiscout, double NetPriceWithDiscout, Type Type, string Parameters, string Description)
         {
             this.BeerName = BeerName;
             this.BreweryID=Brew.BreweryID;
@@ -49,7 +49,7 @@ namespace KatalogPiw.Models
             this.TypeID = Type.TypeID;
             this.Parameters = Parameters;
             this.Description = Description;
-            this.FoodParing = FoodParing;
+            //this.FoodParing = FoodParing;
         }
     }
 }

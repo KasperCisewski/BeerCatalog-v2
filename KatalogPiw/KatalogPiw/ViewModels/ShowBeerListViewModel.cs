@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
-
 using Syncfusion.Drawing;
 using Syncfusion.Pdf;
 using System.IO;
@@ -9,7 +8,6 @@ using Syncfusion.Pdf.Security;
 using Syncfusion.Pdf.Graphics;
 using System.Reflection;
 using Syncfusion.Pdf.Grid;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.Pdf.Parsing;
@@ -43,7 +41,6 @@ namespace KatalogPiw.ViewModels
                     notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, _beers));
 
                 }
-
             }
         }
 
@@ -115,6 +112,21 @@ namespace KatalogPiw.ViewModels
             }            
         }
 
+        public void ClearAllBearsInList()
+        {
+
+            for(int i=0;i<_beers.Count;i++)
+            {
+                if(_beers[i].IsSelect==true)
+                {
+                    _beers[i].IsSelect = false;
+                }
+            }
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace,_beers,_beers)); // tu cos zmienic
+            //_typeList.Where(d => (d.TypeID == type.TypeID)).First().IsSelected = true;
+
+        }
+
         public void SelectAllBeers(string searchBarText, object breweryListObject, object typeListObject, double value)
         {
             List<Beer> beers = FiltringBeers(searchBarText, breweryListObject, typeListObject, value);
@@ -124,18 +136,19 @@ namespace KatalogPiw.ViewModels
                 beers[i].IsSelect = true;
             }
 
-            for (int i = 0; i < beers.Count; i++)
-            {
-                for (int j = 0; j < _beers.Count; j++)
-                {
-                    if (beers[i].ID == _beers[j].ID)
-                    {
-                        _beers[j].IsSelect = true;
-                        notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, _beers, _beers)); // tu cos zmienic
-                        break;
-                    }
-                }
-            }
+            //for (int i = 0; i < beers.Count; i++)
+            //{
+            //    for (int j = 0; j < _beers.Count; j++)
+            //    {
+            //        if (beers[i].ID == _beers[j].ID)
+            //        {
+            //            _beers[j].IsSelect = true;
+            //            break;
+            //        }
+            //    }
+            //}
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, beers,_beers)); // tu cos zmienic
+
         }
 
         public void UpdateTypeList(Models.Type type)

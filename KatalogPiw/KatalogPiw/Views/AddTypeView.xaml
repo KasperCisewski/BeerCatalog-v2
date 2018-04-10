@@ -6,6 +6,8 @@
         <StackLayout>
             <Label Text="Nowy Gatunek" HorizontalOptions="Center"/>
             <Entry x:Name="TypeName" WidthRequest="150"/>
+            <Label Text="Food Paring" HorizontalOptions="Start"/>
+            <Entry x:Name="FoodParing"  />
             <Button x:Name="btn" Clicked="buttonSaveType_Click" Text="Zapisz Gatunek" FontSize="14" BorderColor="Black" MinimumWidthRequest="25" MinimumHeightRequest="50"/>
             <Label Text="Gatunki" FontSize="20"/>
             <ListView x:Name="TypeList" ItemsSource="{Binding TypeList}"   CachingStrategy="RecycleElement" MinimumHeightRequest="30" MinimumWidthRequest="30">

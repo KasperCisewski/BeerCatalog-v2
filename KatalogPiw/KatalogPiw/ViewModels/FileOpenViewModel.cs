@@ -74,8 +74,9 @@ namespace KatalogPiw.ViewModels
                     Models.Type type = new Models.Type();
                     brewery.BreweryName = csvModel.Provider;
                     type.TypeName = csvModel.Group;
+                    type.FoodParing = csvModel.Provider;//docelowo foodparing
 
-                    Beer beer = new Beer(csvModel.Name, brewery, csvModel.NetPrice, csvModel.PurchasePrice, type, csvModel.UnitWeight, csvModel.Description, csvModel.Quantity.ToString());
+                    Beer beer = new Beer(csvModel.Name, brewery, csvModel.NetPrice, csvModel.PurchasePrice, type, csvModel.UnitWeight, csvModel.Description);
                     beer.BrewerName = brewery.BreweryName;
                     beer.TypeName = type.TypeName;
                    
@@ -83,11 +84,10 @@ namespace KatalogPiw.ViewModels
                     beer.BreweryID = brewery.BreweryID;
                     beer.TypeID = type.TypeID;
                     beer.PriceListA = CountGrossPrice(csvModel.NetPrice);
-                   // beer.PriceListB = CountGrossPrice(csvModel.NetPrice * 0.95);
-                    //beer.PriceListC = CountGrossPrice(csvModel.NetPrice * 0.90);
                     beer.Quantity = csvModel.Quantity;
                     beer.EanCode = csvModel.Code;
                     beer.PhotoPath = csvModel.FilePickturePath;
+                    beer.PhotoPath = ConvertPath(beer.PhotoPath);
                     beer.Plato = csvModel.PackageWeight;
                    
                     _beerList.Add(beer);
@@ -95,6 +95,16 @@ namespace KatalogPiw.ViewModels
                 }
             }
             return _beerList;
+        }
+
+        private string ConvertPath(string path)
+        {
+            string[] tab;
+            tab = path.Split("materiały browary");
+            path = "ms-appx:///Photos" + tab[1];
+            return path;
+
+
         }
 
         private void UpdateDataBases(ref Brewery brewery,ref Models.Type type)

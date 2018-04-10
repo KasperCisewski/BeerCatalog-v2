@@ -18,15 +18,10 @@
                 <Entry x:Name="Parameters"  />
                 <Label Text="Opis" HorizontalOptions="Start"/>
                 <Entry x:Name="Description"    />
-                <Label Text="Food Paring" HorizontalOptions="Start"/>
-                <Entry x:Name="FoodParing"  />
+                
                 <Button x:Name="btn" Clicked="buttonSaveBeer_Click" Text="Submit" FontSize="14" BorderColor="Black" MinimumWidthRequest="20" MinimumHeightRequest="30"/>
                 <Button x:Name="RefreshButton" Clicked="buttonRefreshButton_Click" Text="Refresh" FontSize="14" MinimumWidthRequest="20" MinimumHeightRequest="30"/>
-                <Button x:Name="PokazListe" Clicked="buttonShowList_Click" Text="Pokaz Liste" FontSize="13" MinimumWidthRequest="20" MinimumHeightRequest="30"/>
-                <Button x:Name="WczytajPlik" Clicked="buttonLoadFile_Click" Text="Wczytaj plik" FontSize="13" MinimumHeightRequest="30" MinimumWidthRequest="20"/>
             </StackLayout>
-
-
         </ScrollView>
     </ContentPage.Content>
     

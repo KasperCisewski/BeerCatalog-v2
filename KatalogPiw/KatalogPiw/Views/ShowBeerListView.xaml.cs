@@ -47,6 +47,16 @@ namespace KatalogPiw.Views
 
         }
 
+        private async void buttonClearList_Click(object sender,TextChangedEventArgs e)
+        {
+            //BeerList.BeginRefresh();
+            //vm.ClearAllBearsInList();
+            //BeerList.EndRefresh();
+            vm = new ShowBeerListViewModel();
+            BindingContext = vm;
+            InitializeComponent();
+        }
+
         private async void buttonSelectAllInList_Click(object sender, TextChangedEventArgs e)
         {
             if (SearchBar.Text == null)
@@ -110,7 +120,6 @@ namespace KatalogPiw.Views
 
         private async void ClearTypeContext(object Sender, EventArgs e)
         {
-
             TypeList.SelectedItem = null;
         }
 
@@ -135,6 +144,7 @@ namespace KatalogPiw.Views
             BeerList.ItemsSource = vm.FiltringBeers(SearchBar.Text, BreweryList.SelectedItem, TypeList.SelectedItem, Slider.Value);
 
         }
+
         async void SelectBrewery_ItemSelect(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)

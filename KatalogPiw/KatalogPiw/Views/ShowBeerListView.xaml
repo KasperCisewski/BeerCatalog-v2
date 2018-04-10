@@ -9,7 +9,7 @@
             <SearchBar x:Name="SearchBar"    HeightRequest="50" TextChanged="SearchBar_TextChanged"   />
             <StackLayout Orientation="Horizontal">
             
-                <ListView x:Name="TypeList" ItemsSource="{Binding TypeList}"  ItemTapped="SelectType_ItemSelect"  >
+                <ListView x:Name="TypeList" ItemsSource="{Binding TypeList}"  ItemTapped="SelectType_ItemSelect">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -67,7 +67,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout Orientation="Horizontal" >
-
+            <Button x:Name="Clear" Clicked="buttonClearList_Click" Text="Wyczysc liste" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
             <Button x:Name="SelectAll" Clicked="buttonSelectAllInList_Click" Text="Zaznacz wszystkie" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
             <Button x:Name="CreatePriceListA" Clicked="buttonCreatePriceListA_Click" Text="Generuj Cennik A" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>
             <Button x:Name="CreatePriceListB" Clicked="buttonCreatePriceListB_Click" Text="Generuj Cennik B" FontSize="14" MinimumWidthRequest="25"  MinimumHeightRequest="50" HorizontalOptions="EndAndExpand"/>

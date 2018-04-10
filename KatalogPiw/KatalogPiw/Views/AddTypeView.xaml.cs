@@ -29,7 +29,8 @@ namespace KatalogPiw.Views
             else
             {
                 string name = TypeName.Text;
-                vm.AddType(name);
+                string foodParing = FoodParing.Text;
+                vm.AddType(name,foodParing);
             }
         }
         private async void OnEdit(object sender, EventArgs e)

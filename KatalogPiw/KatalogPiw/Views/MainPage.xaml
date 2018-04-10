@@ -4,6 +4,26 @@
             xmlns:views="clr-namespace:KatalogPiw.Views"
             x:Class="KatalogPiw.Views.MainPage">
     <TabbedPage.Children>
+        <NavigationPage Title="Pokaz liste">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ShowBeerListView />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Wczytaj Plik">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:FileOpenView />
+            </x:Arguments>
+        </NavigationPage>
         <NavigationPage Title="Dodaj Piwo">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -34,5 +54,6 @@
                 <views:AddTypeView />
             </x:Arguments>
         </NavigationPage>
+     
     </TabbedPage.Children>
 </TabbedPage>
