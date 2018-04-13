@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-10T19:54:05.786</Modified>
+      <Modified>2018-04-12T21:49:49.388</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\KatalogPiw.UWP.exe">
       <PackagePath>entrypoint\KatalogPiw.UWP.exe</PackagePath>
-      <Modified>2018-04-10T19:54:01.462</Modified>
+      <Modified>2018-04-12T21:49:45.300</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pc\.nuget\packages\newtonsoft.json\9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
@@ -1504,11 +1504,11 @@
     <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-10T19:54:04.059</Modified>
+      <Modified>2018-04-12T21:49:48.078</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\Core\KatalogPiw.UWP.exe">
       <PackagePath>KatalogPiw.UWP.exe</PackagePath>
-      <Modified>2018-04-10T19:54:05.758</Modified>
+      <Modified>2018-04-12T21:49:49.366</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -86,8 +86,8 @@ namespace KatalogPiw.ViewModels
                     beer.PriceListA = CountGrossPrice(csvModel.NetPrice);
                     beer.Quantity = csvModel.Quantity;
                     beer.EanCode = csvModel.Code;
-                    beer.PhotoPath = csvModel.FilePickturePath;
-                    beer.PhotoPath = ConvertPath(beer.PhotoPath);
+                    //beer.PhotoPath = csvModel.FilePickturePath;
+                    beer.PhotoPath = ConvertPath(csvModel.FilePickturePath);
                     beer.Plato = csvModel.PackageWeight;
                    
                     _beerList.Add(beer);
@@ -99,10 +99,15 @@ namespace KatalogPiw.ViewModels
 
         private string ConvertPath(string path)
         {
-            string[] tab;
-            tab = path.Split("materiały browary");
-            path = "ms-appx:///Photos" + tab[1];
-            return path;
+            if(String.IsNullOrEmpty(path))
+            {
+                return " ";
+            }
+            string[] tab = path.Split('\\') ;
+           
+            string pathPhoto = "Photos" + "\\" + tab[tab.Length - 2] + "\\" + tab[tab.Length - 1];
+            return pathPhoto;
+
 
 
         }

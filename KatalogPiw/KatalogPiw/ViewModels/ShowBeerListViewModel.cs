@@ -284,8 +284,22 @@ namespace KatalogPiw.ViewModels
                     grossPrice = FileOpenViewModel.UptoTwoDecimalPoints(grossPrice);
                     pdfGridRow.Cells[8].Value = grossPrice.ToString();
                     pdfGridRow.Cells[9].Value = OutBeerList[i].PriceListA.ToString();
-                    //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
-                    pdfGridRow.Height = 47;
+                //add image to cell 
+                    if (OutBeerList[i].PhotoPath == " ")
+                    {
+                    }
+                    else
+                    { 
+                        Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
+                        PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+                    //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
+                    //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
+                    pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
+                    pdfGridRow.Cells[10].Style.BackgroundImage = imagePhoto;
+                        pdfGridRow.Cells[10].Value = 0;
+                    }
+                //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
+                pdfGridRow.Height = 47;
 
                     pdfGridRow.Style.Font = font;
                 }
