@@ -26,7 +26,7 @@ namespace KatalogPiw.ViewModels
 
         }
 
-        public void AddBrewery(string BreweryName)
+        public void AddBreweryByName(string BreweryName)
         {
             Brewery brewery = new Brewery();
             brewery.BreweryName = BreweryName;
@@ -37,14 +37,16 @@ namespace KatalogPiw.ViewModels
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, brewery));
         }
 
-        public void DeleteBrewery(object Sender)
+        public void DeleteBreweryByObject(object Sender)
         {
             var mi = ((MenuItem)Sender);
-
             var brow = (Brewery)mi.BindingContext;
-
             int ID = brow.BreweryID;
+            DeleteBrewaryByID(ID);
+        }
 
+        private void DeleteBrewaryByID(int ID)
+        {
             for (int i = 0; i < _breweryList.Count; i++)
             {
                 if (ID == _breweryList[i].BreweryID)
@@ -56,7 +58,6 @@ namespace KatalogPiw.ViewModels
                     break;
                 }
             }
-
         }
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;

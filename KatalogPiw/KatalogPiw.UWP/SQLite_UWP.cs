@@ -21,7 +21,7 @@ namespace KatalogPiw.UWP
 
             var dbName = "KatalogPiwDb.db3";
             var path = Path.Combine(ApplicationData.
-              Current.LocalFolder.Path, dbName);
+        Current.LocalFolder.Path, dbName);
             return new SQLiteConnection(path);
 
         }

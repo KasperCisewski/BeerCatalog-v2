@@ -2,6 +2,7 @@
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Syncfusion.Drawing;
+using Syncfusion.Compression;
 using Syncfusion.Pdf;
 using System.IO;
 using Syncfusion.Pdf.Security;
@@ -289,17 +290,21 @@ namespace KatalogPiw.ViewModels
                     {
                     }
                     else
-                    { 
-                        Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
-                        PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+                    {
+                    //dodac try przy otwieraniu pliku
+                    Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
+                    PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+          
+                       
                     //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
                     //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
                     pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
+              
                     pdfGridRow.Cells[10].Style.BackgroundImage = imagePhoto;
                         pdfGridRow.Cells[10].Value = 0;
                     }
                 //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
-                pdfGridRow.Height = 47;
+                pdfGridRow.Height = 38;
 
                     pdfGridRow.Style.Font = font;
                 }

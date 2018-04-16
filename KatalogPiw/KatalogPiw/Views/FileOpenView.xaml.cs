@@ -33,7 +33,7 @@ namespace KatalogPiw.Views
                 byte[] data = fileData.DataArray;
 
                 string name = fileData.FileName;
-                vm.LoadFile(name);
+                vm.LoadBeerListFile(name);
                 string readText = data.ToString();
                 //string filePath = fileData.FilePath;
                 DisplayAlert("done", "Udalo sie zaimportowac piwa", "ok");
