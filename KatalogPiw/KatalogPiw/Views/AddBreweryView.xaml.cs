@@ -33,7 +33,7 @@ namespace KatalogPiw.Views
             else
             {
                 string Nazwa = BreweryName.Text;
-                vm.AddBrewery(Nazwa);
+                vm.AddBreweryByName(Nazwa);
                // Init();
             }
         }
@@ -43,12 +43,11 @@ namespace KatalogPiw.Views
             await Navigation.PushAsync(new EditorView(sender));
             Init();
         }
+
+
         private async void OnDelete(object Sender, EventArgs e)
         {
-
-            vm.DeleteBrewery(Sender);
-
-
+            vm.DeleteBreweryByObject(Sender);
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

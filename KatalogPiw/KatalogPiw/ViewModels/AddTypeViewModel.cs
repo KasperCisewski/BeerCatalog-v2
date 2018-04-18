@@ -26,7 +26,7 @@ namespace KatalogPiw.ViewModels
             }
         }
 
-        public void AddType(string typeName,string foodParing)
+        public void AddTypeByName(string typeName,string foodParing)
         {
             Models.Type type = new Models.Type();
             type.TypeName = typeName;
@@ -36,7 +36,7 @@ namespace KatalogPiw.ViewModels
             notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, type));
         }
 
-        public void DeleteType(Object Sender)
+        public void DeleteTypeByObject(Object Sender)
         {
             var mi = ((MenuItem)Sender);
             Models.Type type = (Models.Type)mi.BindingContext;

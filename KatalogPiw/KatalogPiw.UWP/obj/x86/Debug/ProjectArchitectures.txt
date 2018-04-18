@@ -1,1 +1,1 @@
-C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\KatalogPiw.UWP.csproj;x86
+C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\KatalogPiw.UWP.csproj;x86

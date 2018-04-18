@@ -30,7 +30,7 @@ namespace KatalogPiw.Views
             {
                 string name = TypeName.Text;
                 string foodParing = FoodParing.Text;
-                vm.AddType(name,foodParing);
+                vm.AddTypeByName(name,foodParing);
             }
         }
         private async void OnEdit(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace KatalogPiw.Views
         }
         private async void OnDelete(object Sender, EventArgs e)
         {
-            vm.DeleteType(Sender);
+            vm.DeleteTypeByObject(Sender);
 
         }
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

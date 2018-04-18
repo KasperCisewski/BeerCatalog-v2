@@ -16,7 +16,6 @@ namespace KatalogPiw.ViewModels
         public ObservableCollection<Beer> BeerList
         {
             get { return _beerList; }
-
         }
 
         public  AddBeerViewModel()

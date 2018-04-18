@@ -16,25 +16,25 @@ namespace KatalogPiw.ViewModels
         {
         }
 
-        public void LoadFile(string fileName)
+        public void LoadBeerListFile(string fileName)
         {
             List<string> lines = new List<string>();
-            try
+            List<CsvModel> ModelsList = new List<CsvModel>();
+            List<Beer> BeerList = new List<Beer>();
+            using (StreamReader sr = new StreamReader((fileName), Encoding.GetEncoding("utf-8")))
             {
-                
-                using (StreamReader sr = new StreamReader((fileName), Encoding.GetEncoding("utf-8")))
+                foreach (var lin in File.ReadLines(fileName))
                 {
-                    foreach (var lin in File.ReadLines(fileName))
-                    {
-                        lines.Add(lin);
-                    }
+                    lines.Add(lin);
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
+            
+            ModelsList = LinesToData(lines);
+            BeerList = ConvertToBeer(ModelsList);
+        }
+
+        private List<CsvModel> LinesToData(List<string> lines )
+        {
             lines = GetRecords(lines);
             List<CsvModel> ModelsList = new List<CsvModel>();
             for (int i = 0; i < lines.Count; i++)
@@ -45,8 +45,7 @@ namespace KatalogPiw.ViewModels
                 CsvModel cSVModel = new CsvModel(tabToAddModel);
                 ModelsList.Add(cSVModel);
             }
-            List<Beer> BeerList = new List<Beer>();
-            BeerList = ConvertToBeer(ModelsList);
+            return ModelsList;
         }
 
         List<string> GetRecords(List<string> lines)
@@ -69,7 +68,7 @@ namespace KatalogPiw.ViewModels
             for (int i = 0; i < CsvModelList.Count; i++)
             {
                 CsvModel csvModel = CsvModelList[i];
-                if (csvModel.Quantity >0)
+                if (csvModel.Quantity > 0)
                 {
 
 
@@ -82,7 +81,7 @@ namespace KatalogPiw.ViewModels
                     Beer beer = new Beer(csvModel.Name, brewery, csvModel.NetPrice, csvModel.PurchasePrice, type, csvModel.UnitWeight, csvModel.Description);
                     beer.BrewerName = brewery.BreweryName;
                     beer.TypeName = type.TypeName;
-                   
+
                     UpdateDataBases(ref brewery, ref type);
                     beer.BreweryID = brewery.BreweryID;
                     beer.TypeID = type.TypeID;
@@ -92,7 +91,7 @@ namespace KatalogPiw.ViewModels
                     //beer.PhotoPath = csvModel.FilePickturePath;
                     beer.PhotoPath = ConvertPath(csvModel.FilePickturePath);
                     beer.Plato = csvModel.PackageWeight;
-                   
+
                     _beerList.Add(beer);
                     KatalogPiw.App.Database.SaveBeer(beer);
                 }
@@ -102,27 +101,27 @@ namespace KatalogPiw.ViewModels
 
         private string ConvertPath(string path)
         {
-            if(String.IsNullOrEmpty(path))
+            if (String.IsNullOrEmpty(path))
             {
                 return " ";
             }
-            string[] tab = path.Split('\\') ;
-           
+            string[] tab = path.Split('\\');
+
             string pathPhoto = "Photos" + "\\" + tab[tab.Length - 2] + "\\" + tab[tab.Length - 1];
             pathPhoto = DependencyService.Get<IPhotos>().GetPath(pathPhoto);
             return pathPhoto;
         }
 
-        private void UpdateDataBases(ref Brewery brewery,ref Models.Type type)
+        private void UpdateDataBases(ref Brewery brewery, ref Models.Type type)
         {
-            if(IsBrewerInDB(ref brewery)==false)
+            if (IsBrewerInDB(ref brewery) == false)
             {
                 App.Database.SaveBrewery(brewery);
             }
-            if(IsTypeInDB(ref type)==false)
+            if (IsTypeInDB(ref type) == false)
             {
-                App.Database.SaveType( type);
-            }           
+                App.Database.SaveType(type);
+            }
         }
 
         private bool IsBrewerInDB(ref Brewery brewery)
@@ -145,7 +144,7 @@ namespace KatalogPiw.ViewModels
             List<Models.Type> types = App.Database.GetTypes();
             for (int i = 0; i < types.Count; i++)
             {
-                if(types[i].TypeName.ToLower()==type.TypeName.ToLower())
+                if (types[i].TypeName.ToLower() == type.TypeName.ToLower())
                 {
                     type.TypeID = types[i].TypeID;
                     return true;
@@ -161,23 +160,23 @@ namespace KatalogPiw.ViewModels
             netPrice = netPrice * 1.23;
             netPrice = netPrice / (0.8);
             netPrice = UptoTwoDecimalPoints(netPrice);
-            netPrice= System.Math.Round(netPrice, 2);
+            netPrice = System.Math.Round(netPrice, 2);
             string s = netPrice.ToString();
-            char[] tab=String.Format("{0:0.00}", netPrice).ToCharArray();
+            char[] tab = String.Format("{0:0.00}", netPrice).ToCharArray();
             String.Format("{0:0.00}", s);
-            netPrice = RoundingPrice(tab,netPrice);
+            netPrice = RoundingPrice(tab, netPrice);
             netPrice = UptoTwoDecimalPoints(netPrice);
             return netPrice;
         }
 
-        private double RoundingPrice(char[] digitInTab,double netPrice)
+        private double RoundingPrice(char[] digitInTab, double netPrice)
         {
             string priceInString = new string(digitInTab);
             priceInString = " " + priceInString;
             char[] tab = priceInString.ToCharArray();
             int lastDigit = (int)Char.GetNumericValue(tab[priceInString.Length - 1]);
 
-            if (lastDigit>=5)
+            if (lastDigit >= 5)
             {
                 lastDigit = '9';
                 tab[priceInString.Length - 1] = (char)lastDigit;
@@ -189,14 +188,14 @@ namespace KatalogPiw.ViewModels
             {
                 lastDigit = '9';
                 tab[priceInString.Length - 1] = (char)lastDigit;
-                if(tab[priceInString.Length-2]=='0')
+                if (tab[priceInString.Length - 2] == '0')
                 {
                     int nineDigit = '9';
                     tab[priceInString.Length - 2] = (char)nineDigit;
-                    if(tab[priceInString.Length-4]=='0')
+                    if (tab[priceInString.Length - 4] == '0')
                     {
                         tab[priceInString.Length - 4] = (char)nineDigit;
-                        if(tab[priceInString.Length-5]=='1')
+                        if (tab[priceInString.Length - 5] == '1')
                         {
                             tab[priceInString.Length - 5] = ' ';
 
