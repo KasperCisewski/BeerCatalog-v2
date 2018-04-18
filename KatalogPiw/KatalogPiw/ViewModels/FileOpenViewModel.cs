@@ -1,8 +1,11 @@
 ﻿using KatalogPiw.Models;
+using KatalogPiw.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Xamarin.Forms;
+
 
 
 namespace KatalogPiw.ViewModels
@@ -106,10 +109,8 @@ namespace KatalogPiw.ViewModels
             string[] tab = path.Split('\\') ;
            
             string pathPhoto = "Photos" + "\\" + tab[tab.Length - 2] + "\\" + tab[tab.Length - 1];
+            pathPhoto = DependencyService.Get<IPhotos>().GetPath(pathPhoto);
             return pathPhoto;
-
-
-
         }
 
         private void UpdateDataBases(ref Brewery brewery,ref Models.Type type)

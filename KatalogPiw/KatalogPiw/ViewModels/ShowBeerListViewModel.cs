@@ -122,10 +122,10 @@ namespace KatalogPiw.ViewModels
                     _beers[i].IsSelect = false;
                 }
             }
-            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace,_beers,_beers)); // tu cos zmienic
-            //_typeList.Where(d => (d.TypeID == type.TypeID)).First().IsSelected = true;
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add,_beers));
 
         }
+    
 
         public void SelectAllBeers(string searchBarText, object breweryListObject, object typeListObject, double value)
         {
@@ -135,20 +135,20 @@ namespace KatalogPiw.ViewModels
             {
                 beers[i].IsSelect = true;
             }
-
+            //List<Beer> newBeerList = _beers.ToList();
             //for (int i = 0; i < beers.Count; i++)
             //{
             //    for (int j = 0; j < _beers.Count; j++)
             //    {
             //        if (beers[i].ID == _beers[j].ID)
             //        {
-            //            _beers[j].IsSelect = true;
+            //            newBeerList[j].IsSelect = true;
+            //         //   _beers[j].IsSelect = true;
             //            break;
             //        }
             //    }
             //}
-            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, beers,_beers)); // tu cos zmienic
-
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         public void UpdateTypeList(Models.Type type)
@@ -176,13 +176,8 @@ namespace KatalogPiw.ViewModels
         public void CreatePriceListA()
         {
 
-      
-                PdfDocument doc = new PdfDocument();
+            PdfDocument doc = new PdfDocument();
 
-            // test to verify what resources are available
-            //var allRessources = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
-
-            //load the font from Assets
             Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.Helvetica-Bold.ttf");
             PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
             
@@ -272,10 +267,10 @@ namespace KatalogPiw.ViewModels
                     PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
                     pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
                     pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
-                    pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;    //OutBeerList[i].   Browary[OutBeerList[i].BrowarID - 1].NazwaBrowaru;
+                    pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;    
                     pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
                     pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
-                    pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; // DodawanieGatunkuViewModel.ListaWszystkichGatunkow[OutBeerList[i].GatunekID - 1].NazwaGatunku;
+                    pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters;
                     pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
                     double outputValue = OutBeerList[i].NetPriceWithoutDiscout;
                     outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
@@ -292,9 +287,8 @@ namespace KatalogPiw.ViewModels
                     { 
                         Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
                         PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
-                    //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
-                    //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
-                    pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
+
+                    //pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
                     pdfGridRow.Cells[10].Style.BackgroundImage = imagePhoto;
                         pdfGridRow.Cells[10].Value = 0;
                     }

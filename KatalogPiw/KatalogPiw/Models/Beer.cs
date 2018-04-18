@@ -20,7 +20,6 @@ namespace KatalogPiw.Models
         public double NetPriceWithoutDiscout { get; set; }
         public double NetPriceWithDiscout { get; set; }
         public int Quantity { get; set; }
-       // public double[] PriceListBeers = new double[3];
         public double PriceListA { get; set; }
         [ForeignKey(typeof(Type))]
         public int TypeID { get; set; }
@@ -30,9 +29,7 @@ namespace KatalogPiw.Models
         public string Parameters { get; set; }
         public string Plato { get; set; }
         public string Description { get; set; }
-        //public string FoodParing { get; set; }
         public string PhotoPath { get; set; }
-        // ImageSource imageSource;
         public bool IsSelect { get; set; }
 
         public Beer()
@@ -49,7 +46,6 @@ namespace KatalogPiw.Models
             this.TypeID = Type.TypeID;
             this.Parameters = Parameters;
             this.Description = Description;
-            //this.FoodParing = FoodParing;
         }
     }
 }

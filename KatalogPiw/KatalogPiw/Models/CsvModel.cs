@@ -26,7 +26,6 @@ namespace KatalogPiw.Models
         }
         public CsvModel(string[] tab)
         {
-
             this.ID = Convert.ToInt32(tab[0]);
             this.Code = tab[1];
             this.Name = tab[2];

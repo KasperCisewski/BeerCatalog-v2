@@ -95,6 +95,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Photos_UWP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveWindowsPhone.cs" />
     <Compile Include="SQLite_UWP.cs" />
