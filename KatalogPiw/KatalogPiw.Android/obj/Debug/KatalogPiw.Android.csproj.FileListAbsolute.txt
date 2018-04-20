@@ -116,12 +116,3 @@ C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug
 C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\android\assets\System.ServiceModel.Internals.pdb
 C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\android\assets\System.Xml.Linq.pdb
 C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\android\assets\System.Xml.pdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\bin\Debug\KatalogPiw.Android.dll
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\KatalogPiw.Android.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\Plugin.FilePicker.Abstractions.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\Plugin.FilePicker.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\SQLiteNetExtensions.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\Xamarin.Forms.Core.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
-C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.Android\obj\Debug\linksrc\Xamarin.Forms.Xaml.dll.mdb

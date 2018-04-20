@@ -52,10 +52,10 @@ namespace KatalogPiw.Views
             //BeerList.BeginRefresh();
             //vm.ClearAllBearsInList();
             //BeerList.EndRefresh();
-            //vm = new ShowBeerListViewModel();
-            //BindingContext = vm;
-            //InitializeComponent();
-            vm.ClearAllBearsInList();
+            vm = new ShowBeerListViewModel();
+            BindingContext = vm;
+            InitializeComponent();
+         //   vm.ClearAllBearsInList();
         }
 
         private async void buttonSelectAllInList_Click(object sender, TextChangedEventArgs e)
