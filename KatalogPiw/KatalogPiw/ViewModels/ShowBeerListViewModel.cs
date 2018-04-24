@@ -25,9 +25,9 @@ using System.Collections;
 
 namespace KatalogPiw.ViewModels
 {
-    public class ShowBeerListViewModel:INotifyPropertyChanged,INotifyCollectionChanged
+    public class ShowBeerListViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
-        private ObservableCollection <Beer> _beers;
+        private ObservableCollection<Beer> _beers;
         public ObservableCollection<Beer> Beers
         {
             get
@@ -94,39 +94,39 @@ namespace KatalogPiw.ViewModels
             else if (breweryListObject == null)
             {
                 Models.Type type = (Models.Type)typeListObject;
-               
-                 return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
-                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.TypeID==type.TypeID)).ToList();
+
+                return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                   || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.TypeID == type.TypeID)).ToList();
             }
             else if (typeListObject == null)
             {
                 Brewery brewery = (Brewery)breweryListObject;
-                 return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
-                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID==brewery.BreweryID)).ToList();
+                return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                   || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID == brewery.BreweryID)).ToList();
             }
             else
             {
                 Brewery brewery = (Brewery)breweryListObject;
                 Models.Type type = (Models.Type)typeListObject;
-               return  beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
-                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID == brewery.BreweryID) &&(i.TypeID == type.TypeID)).ToList();
-            }            
+                return beers = Beers.Where(i => ((i.BrewerName.ToLower().Contains(searchBarText.ToLower())
+                    || (i.TypeName.ToLower().Contains(searchBarText.ToLower())))) && (i.Quantity > (int)value) && (i.BreweryID == brewery.BreweryID) && (i.TypeID == type.TypeID)).ToList();
+            }
         }
 
         public void ClearAllBearsInList()
         {
 
-            for(int i=0;i<_beers.Count;i++)
+            for (int i = 0; i < _beers.Count; i++)
             {
-                if(_beers[i].IsSelect==true)
+                if (_beers[i].IsSelect == true)
                 {
                     _beers[i].IsSelect = false;
                 }
             }
-            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add,_beers));
+            notifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, _beers));
 
         }
-    
+
 
         public void SelectAllBeers(string searchBarText, object breweryListObject, object typeListObject, double value)
         {
@@ -154,20 +154,20 @@ namespace KatalogPiw.ViewModels
 
         public void UpdateTypeList(Models.Type type)
         {
-            for(int i=0;i<_typeList.Count;i++)
+            for (int i = 0; i < _typeList.Count; i++)
             {
-                if(_typeList[i].TypeName==type.TypeName)
+                if (_typeList[i].TypeName == type.TypeName)
                 {
                     _typeList.Where(d => (d.TypeID == type.TypeID)).First().IsSelected = true;
                 }
             }
-        }    
+        }
 
         public void UpdateBreweryList(Brewery brewery)
         {
-            for(int i=0;i<_breweryList.Count;i++)
+            for (int i = 0; i < _breweryList.Count; i++)
             {
-                if(_breweryList[i].BreweryName==brewery.BreweryName)
+                if (_breweryList[i].BreweryName == brewery.BreweryName)
                 {
                     _breweryList.Where(b => (b.BreweryID == brewery.BreweryID)).First().IsSelected = true;
                 }
@@ -193,11 +193,12 @@ namespace KatalogPiw.ViewModels
 
             PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
 
-            Stream imageStream = File.OpenRead("chmielove.png");
+            Stream imageStream = File.OpenRead("Assets/chmielove.png");
+            //Stream imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.chmielove.png");
             PdfBitmap image = new PdfBitmap(imageStream);
             PdfGraphics graphics = page.Graphics;
 
-            graphics.DrawImage(image, 0, 0); // format 60x50
+            graphics.DrawImage(image, 0, 0, 60, 60); // format 60x60
 
             this.AddHeader(page, doc, "cos");
 
@@ -266,7 +267,10 @@ namespace KatalogPiw.ViewModels
 
             for (int i = 0; i < OutBeerList.Count; i++)
             {
+
                 PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
+                pdfGridRow.Height = 38;
+                pdfGridRow.Style.Font = font;
                 pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
                 pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
                 pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;
@@ -287,311 +291,350 @@ namespace KatalogPiw.ViewModels
                 }
                 else
                 {
-   
+
 
                     //pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
-                    
-                        //dodac try przy otwieraniu pliku
-                        Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
-                        PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+
+                    //dodac try przy otwieraniu pliku
+                    Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
+                    PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
 
 
-                        //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
-                        //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
-                        pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
+                    //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
+                    //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
+                    pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
 
-                        pdfGridRow.Cells[10].Style.BackgroundImage = imagePhoto;
-                        pdfGridRow.Cells[10].Value = 0;
-                    
+                    pdfGridRow.Cells[10].Style.BackgroundImage = imagePhoto;
+                    pdfGridRow.Cells[10].Value = 0;
+
                     //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
-                    pdfGridRow.Height = 38;
 
-                    pdfGridRow.Style.Font = font;
                 }
             }
 
 
-                pdfGrid.Draw(page, 0, 80);
+            pdfGrid.Draw(page, 0, 80);
 
-                //Save and close
-                MemoryStream stream = new MemoryStream();
+            //Save and close
+            MemoryStream stream = new MemoryStream();
 
-                doc.Save(stream);
+            doc.Save(stream);
 
 
-                Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikA.pdf", "application/pdf", stream);
+            Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikA.pdf", "application/pdf", stream);
 
-                doc.Close(true);
+            doc.Close(true);
 
-            }
-        
+        }
 
-            public void CreatePriceListB()
+
+        public void CreatePriceListB()
+        {
+            PdfDocument doc = new PdfDocument();
+            doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
+
+            //load the font from Assets
+            Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.Helvetica-Bold.ttf");
+            PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
+
+
+            PdfPage page = doc.Pages.Add();
+
+            RectangleF bounds = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
+
+            PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
+
+            Stream imageStream = File.OpenRead("Assets/chmielove.png");
+            PdfBitmap image = new PdfBitmap(imageStream);
+            PdfGraphics graphics = page.Graphics;
+
+            graphics.DrawImage(image, 0, 0, 60, 60); // format 60x50
+
+            this.AddHeader(page, doc, "cos");
+
+
+
+            PdfGrid pdfGrid = new PdfGrid();
+            pdfGrid.BeginCellLayout += PdfGrid_BeginCellLayout;
+            pdfGrid.Columns.Add(10);
+            PdfStringFormat format = new PdfStringFormat();
+
+            format.Alignment = PdfTextAlignment.Center;
+            format.LineAlignment = PdfVerticalAlignment.Middle;
+
+            for (int i = 0; i < 10; i++)
             {
-                PdfDocument doc = new PdfDocument();
-                doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
-
-                //load the font from Assets
-                Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.Helvetica-Bold.ttf");
-                PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
-
-
-                PdfPage page = doc.Pages.Add();
-
-                RectangleF bounds = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
-
-                PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
-
-                Stream imageStream = File.OpenRead("chmielove.png");
-                PdfBitmap image = new PdfBitmap(imageStream);
-                PdfGraphics graphics = page.Graphics;
-
-                graphics.DrawImage(image, 0, 0); // format 60x50
-
-                this.AddHeader(page, doc, "cos");
-
-
-
-                PdfGrid pdfGrid = new PdfGrid();
-                pdfGrid.BeginCellLayout += PdfGrid_BeginCellLayout;
-                pdfGrid.Columns.Add(10);
-                PdfStringFormat format = new PdfStringFormat();
-
-                format.Alignment = PdfTextAlignment.Center;
-                format.LineAlignment = PdfVerticalAlignment.Middle;
-
-                for (int i = 0; i < 10; i++)
-                {
-                    pdfGrid.Columns[i].Format = format;
-                }
-                pdfGrid.Columns[0].Width = 50;
-                pdfGrid.Columns[1].Width = 95;
-                pdfGrid.Columns[2].Width = 50;
-                pdfGrid.Columns[3].Width = 30;
-                pdfGrid.Columns[4].Width = 318;
-                pdfGrid.Columns[5].Width = 38;
-                pdfGrid.Columns[6].Width = 38;
-                pdfGrid.Columns[7].Width = 38;
-                pdfGrid.Columns[8].Width = 38;
-                pdfGrid.Headers.Add(1);
-
-                PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
-
-                pdfGridHeader.Cells[0].Value = "Kod";
-                pdfGridHeader.Cells[1].Value = "Nazwa";
-                pdfGridHeader.Cells[2].Value = "Browar";
-                pdfGridHeader.Cells[3].Value = "Gatunek";
-                pdfGridHeader.Cells[4].Value = "Opis";
-                pdfGridHeader.Cells[5].Value = "Alkohol";
-                pdfGridHeader.Cells[6].Value = "Plato";
-                pdfGridHeader.Cells[7].Value = "Cena Netto";
-                pdfGridHeader.Cells[8].Value = "Cena Brutto";
-                // pdfGridHeader.Cells[9].Value = "Zdjecie";
-                pdfGridHeader.Style.Font = font;
-
-                //add rows
-                List<Beer> OutBeerList = new List<Beer>();
-
-                for (int i = 0; i < _beers.Count; i++)
-                {
-                    if (_beers[i].IsSelect == true)
-                    {
-                        OutBeerList.Add(_beers[i]);
-                    }
-                }
-
-                for (int i = 0; i < OutBeerList.Count; i++)
-                {
-                    PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
-                    pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
-                    pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
-                    pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;    //OutBeerList[i].   Browary[OutBeerList[i].BrowarID - 1].NazwaBrowaru;
-                    pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
-                    pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
-                    pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; // DodawanieGatunkuViewModel.ListaWszystkichGatunkow[OutBeerList[i].GatunekID - 1].NazwaGatunku;
-                    pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
-                    double outputValue = OutBeerList[i].NetPriceWithoutDiscout * 0.95;
-                    outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
-                    pdfGridRow.Cells[7].Value = outputValue.ToString();
-                    double grossValue = outputValue * 1.23;
-                    grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
-                    pdfGridRow.Cells[8].Value = grossValue.ToString();
-                    //pdfGridRow.Cells[9].Value = OutBeerList[i].Image;
-                    pdfGridRow.Height = 47;
-                    pdfGridRow.Style.Font = font;
-
-
-                }
-
-
-                pdfGrid.Draw(page, 0, 80);
-
-                //Save and close
-                MemoryStream stream = new MemoryStream();
-
-                doc.Save(stream);
-
-
-
-                Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikB.pdf", "application/pdf", stream);
-
-                doc.Close(true);
+                pdfGrid.Columns[i].Format = format;
             }
+            pdfGrid.Columns[0].Width = 50;
+            pdfGrid.Columns[1].Width = 95;
+            pdfGrid.Columns[2].Width = 50;
+            pdfGrid.Columns[3].Width = 30;
+            pdfGrid.Columns[4].Width = 318;
+            pdfGrid.Columns[5].Width = 38;
+            pdfGrid.Columns[6].Width = 38;
+            pdfGrid.Columns[7].Width = 38;
+            pdfGrid.Columns[8].Width = 38;
+            pdfGrid.Headers.Add(1);
 
-            public void CreatePriceListC()
+            PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
+
+            pdfGridHeader.Cells[0].Value = "Kod";
+            pdfGridHeader.Cells[1].Value = "Nazwa";
+            pdfGridHeader.Cells[2].Value = "Browar";
+            pdfGridHeader.Cells[3].Value = "Gatunek";
+            pdfGridHeader.Cells[4].Value = "Opis";
+            pdfGridHeader.Cells[5].Value = "Alkohol";
+            pdfGridHeader.Cells[6].Value = "Plato";
+            pdfGridHeader.Cells[7].Value = "Cena Netto";
+            pdfGridHeader.Cells[8].Value = "Cena Brutto";
+            pdfGridHeader.Cells[9].Value = "Zdjecie";
+            pdfGridHeader.Style.Font = font;
+
+            //add rows
+            List<Beer> OutBeerList = new List<Beer>();
+
+            for (int i = 0; i < _beers.Count; i++)
             {
-                PdfDocument doc = new PdfDocument();
-                //load the font from Assets
-                Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.Helvetica-Bold.ttf");
-                PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
-
-                doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
-
-                PdfPage page = doc.Pages.Add();
-
-                RectangleF bounds = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
-
-                PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
-
-                Stream imageStream = File.OpenRead("chmielove.png");
-                PdfBitmap image = new PdfBitmap(imageStream);
-                PdfGraphics graphics = page.Graphics;
-
-                graphics.DrawImage(image, 0, 0); // format 60x50
-
-                this.AddHeader(page, doc, "cos");
-
-
-                PdfGrid pdfGrid = new PdfGrid();
-                pdfGrid.BeginCellLayout += PdfGrid_BeginCellLayout;           
-                pdfGrid.Columns.Add(10);
-                PdfStringFormat format = new PdfStringFormat();
-
-                format.Alignment = PdfTextAlignment.Center;
-                format.LineAlignment = PdfVerticalAlignment.Middle;
-
-                for (int i = 0; i < 10; i++)
+                if (_beers[i].IsSelect == true)
                 {
-                    pdfGrid.Columns[i].Format = format;
+                    OutBeerList.Add(_beers[i]);
                 }
-                pdfGrid.Columns[0].Width = 50;
-                pdfGrid.Columns[1].Width = 95;
-                pdfGrid.Columns[2].Width = 50;
-                pdfGrid.Columns[3].Width = 30;
-                pdfGrid.Columns[4].Width = 318;
-                pdfGrid.Columns[5].Width = 38;
-                pdfGrid.Columns[6].Width = 38;
-                pdfGrid.Columns[7].Width = 38;
-                pdfGrid.Columns[8].Width = 38;
-                pdfGrid.Headers.Add(1);
-
-                PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
-
-                pdfGridHeader.Cells[0].Value = "Kod";
-                pdfGridHeader.Cells[1].Value = "Nazwa";
-                pdfGridHeader.Cells[2].Value = "Browar";
-                pdfGridHeader.Cells[3].Value = "Gatunek";
-                pdfGridHeader.Cells[4].Value = "Opis 2";
-                pdfGridHeader.Cells[5].Value = "Alkohol";
-                pdfGridHeader.Cells[6].Value = "Plato";
-                pdfGridHeader.Cells[7].Value = "Cena Netto";
-                pdfGridHeader.Cells[8].Value = "Cena Brutto";
-                // pdfGridHeader.Cells[9].Value = "Zdjecie";
-                pdfGridHeader.Style.Font = font;
-
-
-                //add rows
-                List<Beer> OutBeerList = new List<Beer>();
-
-                for (int i = 0; i < _beers.Count; i++)
-                {
-                    if (_beers[i].IsSelect == true)
-                    {
-                        OutBeerList.Add(_beers[i]);
-                    }
-                }
-
-                for (int i = 0; i < OutBeerList.Count; i++)
-                {
-                    PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
-                    pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
-                    pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
-                    pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;
-                    pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
-                    pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
-                    pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters;
-                    pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
-                    double outputValue = OutBeerList[i].NetPriceWithoutDiscout * 0.90;
-                    outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
-                    pdfGridRow.Cells[7].Value = outputValue.ToString();
-                    double grossValue = outputValue * 1.23;
-                    grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
-                    pdfGridRow.Cells[8].Value = grossValue.ToString();
-                    //pdfGridRow.Cells[9].Value = OutBeerList[i].Image;
-                    pdfGridRow.Height = 47;
-                    pdfGridRow.Style.Font = font;
-
-                }
-
-
-                pdfGrid.Draw(page, 0, 80);
-
-                //Save and close
-                MemoryStream stream = new MemoryStream();
-
-                doc.Save(stream);
-
-                Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikC.pdf", "application/pdf", stream);
-
-                doc.Close(true);
             }
 
-
-
-            private void AddHeader(PdfPage page, PdfDocument doc, string title)
+            for (int i = 0; i < OutBeerList.Count; i++)
             {
-                RectangleF rect = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
-                PdfPageTemplateElement header = new PdfPageTemplateElement(rect);
-                PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 24);
-                float doubleHeight = font.Height * 2;
-                Syncfusion.Drawing.Color activeColor = Syncfusion.Drawing.Color.FromArgb(44, 71, 120);
+                PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
+                pdfGridRow.Height = 38;
+                pdfGridRow.Style.Font = font;
+                pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
+                pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
+                pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;    //OutBeerList[i].   Browary[OutBeerList[i].BrowarID - 1].NazwaBrowaru;
+                pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
+                pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
+                pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters; // DodawanieGatunkuViewModel.ListaWszystkichGatunkow[OutBeerList[i].GatunekID - 1].NazwaGatunku;
+                pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
+                double outputValue = OutBeerList[i].NetPriceWithoutDiscout * 0.95;
+                outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
+                pdfGridRow.Cells[7].Value = outputValue.ToString();
+                double grossValue = outputValue * 1.23;
+                grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
+                pdfGridRow.Cells[8].Value = grossValue.ToString();
+                if (OutBeerList[i].PhotoPath == " ")
+                {
+                }
+                else
+                {
+
+                    //dodac try przy otwieraniu pliku
+                    Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
+                    PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+                    pdfGridRow.Cells[9].ImagePosition = PdfGridImagePosition.Fit;
+
+                    pdfGridRow.Cells[9].Style.BackgroundImage = imagePhoto;
+                    pdfGridRow.Cells[9].Value = 0;
 
 
-                //Draw the image in the Header.
-
-                PdfSolidBrush brush = new PdfSolidBrush(activeColor);
-
-                PdfPen pen = new PdfPen(Syncfusion.Drawing.Color.DarkBlue, 3f);
-                font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
-
-                //Set formattings for the text
-                PdfStringFormat format = new PdfStringFormat();
-                format.Alignment = PdfTextAlignment.Center;
-                format.LineAlignment = PdfVerticalAlignment.Middle;
-
-                //Draw title
-                //Draw description
-                header.Graphics.DrawString("                  mail: biuro@chmielove.eu", font, brush, new RectangleF(0, 0, header.Width, header.Height), format);
-                header.Graphics.DrawString(" tel: 781 507 097", font, brush, new RectangleF(0, 0, header.Width, header.Height + 11), format);
-                header.Graphics.DrawString("       785 886 491", font, brush, new RectangleF(0, 0, header.Width, header.Height + 21), format);
-                brush = new PdfSolidBrush(Syncfusion.Drawing.Color.Gray);
-                font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
-
-                format = new PdfStringFormat();
-                format.Alignment = PdfTextAlignment.Left;
-                format.LineAlignment = PdfVerticalAlignment.Bottom;
+                }
 
 
 
-
-
-                //Add header template at the top.
-                doc.Template.Top = header;
             }
+
+
+            pdfGrid.Draw(page, 0, 80);
+
+            //Save and close
+            MemoryStream stream = new MemoryStream();
+
+            doc.Save(stream);
+
+
+
+            Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikB.pdf", "application/pdf", stream);
+
+            doc.Close(true);
+        }
+
+        public void CreatePriceListC()
+        {
+            PdfDocument doc = new PdfDocument();
+            //load the font from Assets
+            Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatalogPiw.UWP.Assets.Helvetica-Bold.ttf");
+            PdfTrueTypeFont font = new PdfTrueTypeFont(fontStream, 6);
+
+            doc.PageSettings.Orientation = PdfPageOrientation.Landscape;
+
+            PdfPage page = doc.Pages.Add();
+
+            RectangleF bounds = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
+
+            PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
+
+            Stream imageStream = File.OpenRead("Assets/chmielove.png");
+            PdfBitmap image = new PdfBitmap(imageStream);
+            PdfGraphics graphics = page.Graphics;
+
+            graphics.DrawImage(image, 0, 0, 60, 60); // format 60x50
+
+            this.AddHeader(page, doc, "cos");
+
+
+            PdfGrid pdfGrid = new PdfGrid();
+            pdfGrid.BeginCellLayout += PdfGrid_BeginCellLayout;
+            pdfGrid.Columns.Add(10);
+            PdfStringFormat format = new PdfStringFormat();
+
+            format.Alignment = PdfTextAlignment.Center;
+            format.LineAlignment = PdfVerticalAlignment.Middle;
+
+            for (int i = 0; i < 10; i++)
+            {
+                pdfGrid.Columns[i].Format = format;
+            }
+            pdfGrid.Columns[0].Width = 50;
+            pdfGrid.Columns[1].Width = 95;
+            pdfGrid.Columns[2].Width = 50;
+            pdfGrid.Columns[3].Width = 30;
+            pdfGrid.Columns[4].Width = 318;
+            pdfGrid.Columns[5].Width = 38;
+            pdfGrid.Columns[6].Width = 38;
+            pdfGrid.Columns[7].Width = 38;
+            pdfGrid.Columns[8].Width = 38;
+            pdfGrid.Headers.Add(1);
+
+            PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
+
+            pdfGridHeader.Cells[0].Value = "Kod";
+            pdfGridHeader.Cells[1].Value = "Nazwa";
+            pdfGridHeader.Cells[2].Value = "Browar";
+            pdfGridHeader.Cells[3].Value = "Gatunek";
+            pdfGridHeader.Cells[4].Value = "Opis 2";
+            pdfGridHeader.Cells[5].Value = "Alkohol";
+            pdfGridHeader.Cells[6].Value = "Plato";
+            pdfGridHeader.Cells[7].Value = "Cena Netto";
+            pdfGridHeader.Cells[8].Value = "Cena Brutto";
+            pdfGridHeader.Cells[9].Value = "Zdjecie";
+            pdfGridHeader.Style.Font = font;
+
+
+            //add rows
+            List<Beer> OutBeerList = new List<Beer>();
+
+            for (int i = 0; i < _beers.Count; i++)
+            {
+                if (_beers[i].IsSelect == true)
+                {
+                    OutBeerList.Add(_beers[i]);
+                }
+            }
+
+            for (int i = 0; i < OutBeerList.Count; i++)
+            {
+                PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
+                pdfGridRow.Height = 38;
+                pdfGridRow.Style.Font = font;
+                pdfGridRow.Cells[0].Value = OutBeerList[i].EanCode;
+                pdfGridRow.Cells[1].Value = OutBeerList[i].BeerName;
+                pdfGridRow.Cells[2].Value = OutBeerList[i].BrewerName;
+                pdfGridRow.Cells[3].Value = OutBeerList[i].TypeName;
+                pdfGridRow.Cells[4].Value = OutBeerList[i].Description;
+                pdfGridRow.Cells[5].Value = OutBeerList[i].Parameters;
+                pdfGridRow.Cells[6].Value = OutBeerList[i].Plato;
+                double outputValue = OutBeerList[i].NetPriceWithoutDiscout * 0.90;
+                outputValue = FileOpenViewModel.UptoTwoDecimalPoints(outputValue);
+                pdfGridRow.Cells[7].Value = outputValue.ToString();
+                double grossValue = outputValue * 1.23;
+                grossValue = FileOpenViewModel.UptoTwoDecimalPoints(grossValue);
+                pdfGridRow.Cells[8].Value = grossValue.ToString();
+                if (OutBeerList[i].PhotoPath == " ")
+                {
+                }
+                else
+                {
+
+
+                    //pdfGridRow.Cells[10].ImagePosition = PdfGridImagePosition.Fit;
+
+                    //dodac try przy otwieraniu pliku
+                    Stream imageStreamPhoto = File.OpenRead(OutBeerList[i].PhotoPath);
+                    PdfBitmap imagePhoto = new PdfBitmap(imageStreamPhoto);
+
+
+                    //pdfGridRow.Cells[10].Style.CellPadding.Left = 5;
+                    //pdfGridRow.Cells[10].Style.CellPadding.Right = 5;
+                    pdfGridRow.Cells[9].ImagePosition = PdfGridImagePosition.Fit;
+
+                    pdfGridRow.Cells[9].Style.BackgroundImage = imagePhoto;
+                    pdfGridRow.Cells[9].Value = 0;
+
+                    //pdfGridRow.Cells[10].Value = OutBeerList[i].Image;
+
+                }
+
+
+            }
+
+
+            pdfGrid.Draw(page, 0, 80);
+
+            //Save and close
+            MemoryStream stream = new MemoryStream();
+
+            doc.Save(stream);
+
+            Xamarin.Forms.DependencyService.Get<Services.ISave>().SaveTextAsync("CennikC.pdf", "application/pdf", stream);
+
+            doc.Close(true);
+        }
+
+
+
+        private void AddHeader(PdfPage page, PdfDocument doc, string title)
+        {
+            RectangleF rect = new RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
+            PdfPageTemplateElement header = new PdfPageTemplateElement(rect);
+            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 24);
+            float doubleHeight = font.Height * 2;
+            Syncfusion.Drawing.Color activeColor = Syncfusion.Drawing.Color.FromArgb(44, 71, 120);
+
+
+            //Draw the image in the Header.
+
+            PdfSolidBrush brush = new PdfSolidBrush(activeColor);
+
+            PdfPen pen = new PdfPen(Syncfusion.Drawing.Color.DarkBlue, 3f);
+            font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
+
+            //Set formattings for the text
+            PdfStringFormat format = new PdfStringFormat();
+            format.Alignment = PdfTextAlignment.Center;
+            format.LineAlignment = PdfVerticalAlignment.Middle;
+
+            //Draw title
+            //Draw description
+            header.Graphics.DrawString("                  mail: biuro@chmielove.eu", font, brush, new RectangleF(0, 0, header.Width, header.Height), format);
+            header.Graphics.DrawString(" tel: 781 507 097", font, brush, new RectangleF(0, 0, header.Width, header.Height + 11), format);
+            header.Graphics.DrawString("       785 886 491", font, brush, new RectangleF(0, 0, header.Width, header.Height + 21), format);
+            brush = new PdfSolidBrush(Syncfusion.Drawing.Color.Gray);
+            font = new PdfStandardFont(PdfFontFamily.Helvetica, 6, PdfFontStyle.Bold);
+
+            format = new PdfStringFormat();
+            format.Alignment = PdfTextAlignment.Left;
+            format.LineAlignment = PdfVerticalAlignment.Bottom;
+
+
+
+
+
+            //Add header template at the top.
+            doc.Template.Top = header;
+        }
 
         private void PdfGrid_BeginCellLayout(object sender, PdfGridBeginCellLayoutEventArgs args)
         {
-            if (args.CellIndex == 10 && args.Style.BackgroundImage != null)
+            // specify the Cell index for columns that will use images
+            if ((args.CellIndex == 10 || args.CellIndex == 9) && args.Style.BackgroundImage != null)
             {
                 PdfImage backgroundOriginalImage = args.Style.BackgroundImage;
 

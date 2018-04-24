@@ -41,7 +41,7 @@ namespace KatalogPiw.Views
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "Cos nie zadziałało", "OK");
+                DisplayAlert("Error", "Cos nie zadziałało" + ex.Message, "OK");
             }
         }
     }

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\CsvModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Type.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BeerDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IGetPath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IPhotos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ISave.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ISQLite.cs" />
@@ -103,5 +104,10 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\Helvetica-Bold.ttf" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\Helvetica-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\chmielove.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

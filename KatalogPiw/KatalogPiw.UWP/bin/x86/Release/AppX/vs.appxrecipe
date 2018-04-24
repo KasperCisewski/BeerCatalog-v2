@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-1UBMEPO</Machine>
-    <WindowsUser>Pc</WindowsUser>
+    <Machine>SHIN-LAPTOP</Machine>
+    <WindowsUser>Dev</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Release|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>ec0cc741-fd3e-485c-81be-68815c480690</PackageIdentityName>
-    <PackageIdentityPublisher>CN=Pierce Boggan</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\obj\x86\Release\</IntermediateOutputPath>
+    <PackageIdentityPublisher>CN=Kamil Cisewski</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\obj\x86\Release\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,251 +18,255 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\AppX</LayoutDir>
-    <RegisteredManifestChecksum>87320B1847229B52BE233204C8C596AC6C36B4E14F56320962C42073AACC8D17</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>ec0cc741-fd3e-485c-81be-68815c480690_1.0.0.0_x86__hma5z8g0e8z20</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>ec0cc741-fd3e-485c-81be-68815c480690_hma5z8g0e8z20!App</RegisteredUserModeAppID>
+    <LayoutDir>C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\AppX</LayoutDir>
+    <RegisteredManifestChecksum>CC651EE0C7FA4781A81C2FD886C286EEEE018CA7DF3EDD1BF7C86658247B0B54</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>ec0cc741-fd3e-485c-81be-68815c480690_1.0.3.0_x86__ccznaz6wg0kgt</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>ec0cc741-fd3e-485c-81be-68815c480690_ccznaz6wg0kgt!App</RegisteredUserModeAppID>
     <RegisteredPackageID>ec0cc741-fd3e-485c-81be-68815c480690</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=Pierce Boggan</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredPackagePublisher>CN=Kamil Cisewski</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.3.0</RegisteredVersion>
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-04T08:09:12.475</Modified>
+      <Modified>2018-04-24T08:13:51.618</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\chmielove.png">
+      <PackagePath>Assets\chmielove.png</PackagePath>
+      <Modified>2018-03-30T21:05:10.870</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-100.png">
       <PackagePath>Assets\LockScreenLogo.scale-100.png</PackagePath>
-      <Modified>2018-03-31T08:38:20.493</Modified>
+      <Modified>2018-04-07T12:25:11.220</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-125.png">
       <PackagePath>Assets\LockScreenLogo.scale-125.png</PackagePath>
-      <Modified>2018-03-31T08:38:20.495</Modified>
+      <Modified>2018-04-07T12:25:11.221</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-150.png">
       <PackagePath>Assets\LockScreenLogo.scale-150.png</PackagePath>
-      <Modified>2018-03-31T08:38:20.503</Modified>
+      <Modified>2018-04-07T12:25:11.222</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-03-31T08:38:20.505</Modified>
+      <Modified>2018-04-07T12:25:11.223</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\LockScreenLogo.scale-400.png">
       <PackagePath>Assets\LockScreenLogo.scale-400.png</PackagePath>
-      <Modified>2018-03-31T08:38:20.508</Modified>
+      <Modified>2018-04-07T12:25:11.223</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.510</Modified>
+      <Modified>2018-04-07T12:25:11.224</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.633</Modified>
+      <Modified>2018-04-07T12:25:11.225</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.635</Modified>
+      <Modified>2018-04-07T12:25:11.226</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.639</Modified>
+      <Modified>2018-04-07T12:25:11.226</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.643</Modified>
+      <Modified>2018-04-07T12:25:11.227</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.645</Modified>
+      <Modified>2018-04-07T12:25:11.228</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.647</Modified>
+      <Modified>2018-04-07T12:25:11.229</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.767</Modified>
+      <Modified>2018-04-07T12:25:11.230</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.769</Modified>
+      <Modified>2018-04-07T12:25:11.231</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.771</Modified>
+      <Modified>2018-04-07T12:25:11.232</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.779</Modified>
+      <Modified>2018-04-07T12:25:11.233</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.781</Modified>
+      <Modified>2018-04-07T12:25:11.233</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.786</Modified>
+      <Modified>2018-04-07T12:25:11.234</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.901</Modified>
+      <Modified>2018-04-07T12:25:11.235</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.903</Modified>
+      <Modified>2018-04-07T12:25:11.235</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-16_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-16_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.905</Modified>
+      <Modified>2018-04-07T12:25:11.236</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.910</Modified>
+      <Modified>2018-04-07T12:25:11.236</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-256_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-256_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.912</Modified>
+      <Modified>2018-04-07T12:25:11.237</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-32_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-32_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:20.920</Modified>
+      <Modified>2018-04-07T12:25:11.238</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-48_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Square44x44Logo.targetsize-48_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.038</Modified>
+      <Modified>2018-04-07T12:25:11.239</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.040</Modified>
+      <Modified>2018-04-07T12:25:11.239</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.044</Modified>
+      <Modified>2018-04-07T12:25:11.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.047</Modified>
+      <Modified>2018-04-07T12:25:11.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.048</Modified>
+      <Modified>2018-04-07T12:25:11.241</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.050</Modified>
+      <Modified>2018-04-07T12:25:11.242</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-31T08:38:21.172</Modified>
+      <Modified>2018-04-07T12:25:11.244</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\clrcompression.dll">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
-      <Modified>2017-09-30T18:25:58.000</Modified>
+      <Modified>2018-02-23T14:21:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\e_sqlite3.dll">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\e_sqlite3.dll">
       <PackagePath>e_sqlite3.dll</PackagePath>
       <Modified>2017-08-03T12:51:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.dll">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.dll">
       <PackagePath>KatalogPiw.UWP.dll</PackagePath>
-      <Modified>2018-04-04T08:09:09.488</Modified>
+      <Modified>2018-04-24T08:13:49.008</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.exe">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.exe">
       <PackagePath>KatalogPiw.UWP.exe</PackagePath>
-      <Modified>2018-04-04T08:09:12.443</Modified>
+      <Modified>2018-04-24T08:13:51.447</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.pdb">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\KatalogPiw.UWP.pdb">
       <PackagePath>KatalogPiw.UWP.pdb</PackagePath>
-      <Modified>2018-04-04T08:09:12.428</Modified>
+      <Modified>2018-04-24T08:13:51.431</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Pc\source\Xamarin\KatalogPiw\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-04T08:05:46.615</Modified>
+      <Modified>2018-04-24T08:10:42.048</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
-    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-x86\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
+    <ResolvedSDKReference Include="C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-x86\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
       <Name>Microsoft.NET.Native.Framework.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-x86\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-x86\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-x64\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
+    <ResolvedSDKReference Include="C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-x64\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
       <Name>Microsoft.NET.Native.Framework.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-x64\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-x64\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-arm\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
+    <ResolvedSDKReference Include="C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-arm\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx">
       <Name>Microsoft.NET.Native.Framework.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>arm</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.sharedlibrary-arm\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Users\Dev\.nuget\packages\microsoft.net.native.sharedlibrary-arm\2.0.0\build\..\tools\SharedLibrary\ret\Native\Microsoft.NET.Native.Framework.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\x86\Microsoft.NET.Native.Runtime.2.0.appx">
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\x86\Microsoft.NET.Native.Runtime.2.0.appx">
       <Name>Microsoft.NET.Native.Runtime.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\x86\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\x86\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\x64\Microsoft.NET.Native.Runtime.2.0.appx">
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\x64\Microsoft.NET.Native.Runtime.2.0.appx">
       <Name>Microsoft.NET.Native.Runtime.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\x64\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\x64\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\arm\Microsoft.NET.Native.Runtime.2.0.appx">
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\arm\Microsoft.NET.Native.Runtime.2.0.appx">
       <Name>Microsoft.NET.Native.Runtime.2.0</Name>
       <Version>2.0.25709.0</Version>
       <Architecture>arm</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.2.0, MinVersion = 2.0.25709.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\Pc\.nuget\packages\microsoft.net.native.compiler\2.0.0\build\..\tools\Runtime\arm\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\microsoft.net.native.compiler\2.0.3\build\..\tools\Runtime\arm\Microsoft.NET.Native.Runtime.2.0.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>

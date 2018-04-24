@@ -861,3 +861,5 @@ C:\Users\Pc\source\Xamarin\BeerCatalog-v2-master\KatalogPiw\KatalogPiw.UWP\obj\x
 C:\Users\Pc\source\Xamarin\BeerCatalog-v2-master\KatalogPiw\KatalogPiw.UWP\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Pc\source\Xamarin\BeerCatalog-v2-master\KatalogPiw\KatalogPiw.UWP\obj\x86\Debug\Xamarin.Forms.Platform.UAP.pri.xml
 C:\Users\Pc\source\Xamarin\BeerCatalog-v2-master\KatalogPiw\KatalogPiw.UWP\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\Assets\chmielove.png
+C:\Users\Dev\source\repos\BeerCatalog-v2\KatalogPiw\KatalogPiw.UWP\bin\x86\Debug\Core\ForBundle\AppxManifest.xml

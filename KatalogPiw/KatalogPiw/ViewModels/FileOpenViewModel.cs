@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 
 
+
 namespace KatalogPiw.ViewModels
 {
     public class FileOpenViewModel
@@ -21,6 +22,11 @@ namespace KatalogPiw.ViewModels
             List<string> lines = new List<string>();
             List<CsvModel> ModelsList = new List<CsvModel>();
             List<Beer> BeerList = new List<Beer>();
+
+            fileName  = DependencyService.Get<IGetPath>().GetPath(fileName);
+
+
+
             using (StreamReader sr = new StreamReader((fileName), Encoding.GetEncoding("utf-8")))
             {
                 foreach (var lin in File.ReadLines(fileName))

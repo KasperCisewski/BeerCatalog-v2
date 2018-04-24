@@ -145,45 +145,6 @@ namespace _
 		STATUS_NOT_FOUND = 0xC0000225u,
 	}
 
-	[global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=global::System.Runtime.InteropServices.CharSet.Unicode)]
-	[global::System.Runtime.InteropServices.McgRedirectedType("Interop+Kernel32+CPINFOEXW,System.Console, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-	public unsafe partial struct Interop_Kernel32_CPINFOEXW__System_Console
-	{
-		public uint MaxCharSize;
-		public global::_.Interop_Kernel32_CPINFOEXW__DefaultChar_e__FixedBuffer__System_Console DefaultChar;
-		public global::_.Interop_Kernel32_CPINFOEXW__LeadByte_e__FixedBuffer__System_Console LeadByte;
-		public char UnicodeDefaultChar;
-		public uint CodePage;
-		public global::_.Interop_Kernel32_CPINFOEXW__CodePageName_e__FixedBuffer__System_Console CodePageName;
-	}
-
-	[global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Explicit, Size=2)]
-	[global::System.Runtime.InteropServices.McgRedirectedType("Interop+Kernel32+CPINFOEXW+<DefaultChar>e__FixedBuffer,System.Console, Version=4.1.1.0, Culture=neutral, PublicK" +
-		"eyToken=b03f5f7f11d50a3a")]
-	public unsafe partial struct Interop_Kernel32_CPINFOEXW__DefaultChar_e__FixedBuffer__System_Console
-	{
-		[global::System.Runtime.InteropServices.FieldOffset(0)]
-		public byte FixedElementField;
-	}
-
-	[global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Explicit, Size=12)]
-	[global::System.Runtime.InteropServices.McgRedirectedType("Interop+Kernel32+CPINFOEXW+<LeadByte>e__FixedBuffer,System.Console, Version=4.1.1.0, Culture=neutral, PublicKeyT" +
-		"oken=b03f5f7f11d50a3a")]
-	public unsafe partial struct Interop_Kernel32_CPINFOEXW__LeadByte_e__FixedBuffer__System_Console
-	{
-		[global::System.Runtime.InteropServices.FieldOffset(0)]
-		public byte FixedElementField;
-	}
-
-	[global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Explicit, Size=260)]
-	[global::System.Runtime.InteropServices.McgRedirectedType("Interop+Kernel32+CPINFOEXW+<CodePageName>e__FixedBuffer,System.Console, Version=4.1.1.0, Culture=neutral, Public" +
-		"KeyToken=b03f5f7f11d50a3a")]
-	public unsafe partial struct Interop_Kernel32_CPINFOEXW__CodePageName_e__FixedBuffer__System_Console
-	{
-		[global::System.Runtime.InteropServices.FieldOffset(0)]
-		public byte FixedElementField;
-	}
-
 	[global::System.Runtime.InteropServices.McgRedirectedType("Interop+Winsock+WSAData,System.Net.NameResolution, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d5" +
 		"0a3a")]
 	public unsafe partial struct Interop_Winsock_WSAData__System_Net_NameResolution
@@ -819,29 +780,6 @@ namespace Internal.Cryptography.Pal.Native
 		}
 	}
 
-	[global::System.Runtime.InteropServices.McgRedirectedType("Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion,System.Security.Cryptography.X509" +
-		"Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-	public unsafe class SafeCertContextHandleWithKeyContainerDeletion__System_Security_Cryptography_X509Certificates : global::System.Runtime.InteropServices.SafeHandle
-	{
-		public SafeCertContextHandleWithKeyContainerDeletion__System_Security_Cryptography_X509Certificates() : 
-				base(default(global::System.IntPtr), false)
-		{
-		}
-
-		public override bool IsInvalid
-		{
-			get
-			{
-				return false;
-			}
-		}
-
-		protected override bool ReleaseHandle()
-		{
-			return false;
-		}
-	}
-
 	[global::System.Runtime.InteropServices.McgRedirectedType("Internal.Cryptography.Pal.Native.SafeCertStoreHandle,System.Security.Cryptography.X509Certificates, Version=4.2." +
 		"1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
 	public unsafe class SafeCertStoreHandle__System_Security_Cryptography_X509Certificates : global::System.Runtime.InteropServices.SafeHandle
@@ -870,6 +808,29 @@ namespace Internal.Cryptography.Pal.Native
 	public unsafe class SafeCryptMsgHandle__System_Security_Cryptography_X509Certificates : global::System.Runtime.InteropServices.SafeHandle
 	{
 		public SafeCryptMsgHandle__System_Security_Cryptography_X509Certificates() : 
+				base(default(global::System.IntPtr), false)
+		{
+		}
+
+		public override bool IsInvalid
+		{
+			get
+			{
+				return false;
+			}
+		}
+
+		protected override bool ReleaseHandle()
+		{
+			return false;
+		}
+	}
+
+	[global::System.Runtime.InteropServices.McgRedirectedType("Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion,System.Security.Cryptography.X509" +
+		"Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+	public unsafe class SafeCertContextHandleWithKeyContainerDeletion__System_Security_Cryptography_X509Certificates : global::System.Runtime.InteropServices.SafeHandle
+	{
+		public SafeCertContextHandleWithKeyContainerDeletion__System_Security_Cryptography_X509Certificates() : 
 				base(default(global::System.IntPtr), false)
 		{
 		}
